@@ -929,7 +929,7 @@ const RentalApplication = () => {
 								{/* </div> */}
 							</Grid>
 							<Grid item xs={6} md={12}>
-								<Box>"LOCATION APPLYING FOR" PLACEHOLDER</Box>
+								<Box>PLACEHOLDER - LOCATION APPLYING FOR</Box>
 							</Grid>
 							<Grid item xs={6} md={12}>
 								<Box sx={{ display: 'flex', justifyContent: 'right' }}>
