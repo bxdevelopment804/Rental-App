@@ -29,7 +29,7 @@ $max-width: 800px;
 //--------------------
 //Regular Flex Line Items
 #testContainer {
-	// border: solid blue;
+	border: solid blue;
 }
 .testLine {
 	display: flex;
@@ -58,7 +58,7 @@ $max-width: 800px;
 	// min-width: 10vw;
 	// min-width: 100px;
 	// max-width: 200px;
-	clamp: (10vw, 100px, 200px);
+	// clamp: (10vw, 100px, 200px);
 	// border: solid green;
 	margin: 0px 2vw;
 	box-sizing: border-box;
@@ -208,4 +208,30 @@ label {
 #submitButtonContainer {
 	padding: 0em 1em;
 	box-sizing: border-box;
+}
+
+//PersonalInformation.js, RentalHistory.js, EmploymentHistory.js, References.js, SignaturePage.js
+.stepHeader {
+	margin-bottom: 1rem;
+	// border: solid red;
+}
+
+//RentalApplication.js
+#stepper,
+#completionNotice {
+	margin: 1.5rem 0px;
+}
+
+@media (max-width: 575px) {
+	.MuiStepLabel-label {
+		display: none;
+	}
+}
+
+//index.js
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0rem;
 }

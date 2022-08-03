@@ -9,6 +9,7 @@ import RentalHistory from '../components/RentalHistory';
 import EmploymentHistory from '../components/EmploymentHistory';
 import References from '../components/References';
 import Signature from '../components/Signature';
+import { Typography } from '@mui/material';
 // import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -77,7 +78,14 @@ export default function Home() {
 					</span>
 				</a>
 			</footer> */}
-			<footer>Created by BX Development</footer>
+			<footer>
+				<Typography variant='subtitle2'>
+					Created by{' '}
+					<strong>
+						<i>BX Development</i>
+					</strong>
+				</Typography>
+			</footer>
 		</div>
 	);
 }

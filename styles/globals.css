@@ -7,6 +7,10 @@
   margin: auto;
 }
 
+#testContainer {
+  border: solid blue;
+}
+
 .testLine {
   display: flex;
   width: 90vw;
@@ -30,7 +34,6 @@
 
 .smallField {
   display: flex;
-  clamp: 10vw, 100px, 200px;
   margin: 0px 2vw;
   box-sizing: border-box;
 }
@@ -154,6 +157,27 @@ label {
 #submitButtonContainer {
   padding: 0em 1em;
   box-sizing: border-box;
+}
+
+.stepHeader {
+  margin-bottom: 1rem;
+}
+
+#stepper,
+#completionNotice {
+  margin: 1.5rem 0px;
+}
+
+@media (max-width: 575px) {
+  .MuiStepLabel-label {
+    display: none;
+  }
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0rem;
 }
 
 /*# sourceMappingURL=globals.css.map */
