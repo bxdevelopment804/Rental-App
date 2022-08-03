@@ -222,6 +222,11 @@ label {
 	margin: 1.5rem 0px;
 }
 
+#applicantForm {
+	display: flex;
+	margin: auto;
+}
+
 @media (max-width: 575px) {
 	.MuiStepLabel-label {
 		display: none;
