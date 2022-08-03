@@ -180,4 +180,9 @@ footer {
   margin: 1rem 0rem;
 }
 
+#applyButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=globals.css.map */
