@@ -22,7 +22,7 @@ export default function Home() {
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={12}>
 							<Typography variant='h4' align='center'>
-								Please click below if you'd like to apply for one of our
+								Please click below if you would like to apply for one of our
 								properties!
 							</Typography>
 						</Grid>
