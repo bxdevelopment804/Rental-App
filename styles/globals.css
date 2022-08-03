@@ -7,135 +7,6 @@
   margin: auto;
 }
 
-#testContainer {
-  border: solid blue;
-}
-
-.testLine {
-  display: flex;
-  width: 90vw;
-  align-items: center;
-}
-
-.testLabel {
-  display: flex;
-  justify-content: flex-end;
-  border: solid red;
-  text-align: center;
-}
-
-.largeField {
-  display: flex;
-  min-width: 20vw;
-  max-width: 400px;
-  margin: 0px 2vw;
-  box-sizing: border-box;
-}
-
-.smallField {
-  display: flex;
-  margin: 0px 2vw;
-  box-sizing: border-box;
-}
-
-#formGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20vw, 100vw));
-  border: solid red;
-  max-width: 800rem;
-}
-
-#applicantNameLabel {
-  display: flex;
-  justify-content: flex-end;
-  grid-row: 1;
-}
-
-#applicantName {
-  grid-row: 1;
-}
-
-#applicantDOBLabel {
-  display: flex;
-  justify-content: flex-end;
-  grid-row: 1;
-}
-
-#applicantDOB {
-  grid-row: 1;
-}
-
-#applicantPhoneLabel {
-  display: flex;
-  justify-content: flex-end;
-  grid-row: 2;
-}
-
-#applicantPhone {
-  grid-row: 2;
-}
-
-#applicantEmailLabel {
-  display: flex;
-  justify-content: flex-end;
-  grid-row: 2;
-}
-
-#applicantEmail {
-  grid-row: 2;
-}
-
-#currentAddressLabel {
-  grid-row: 3;
-}
-
-#currentAddress {
-  grid-row: 3;
-}
-
-#currentCityLabel {
-  grid-row: 3;
-}
-
-#currentCity {
-  grid-row: 3;
-}
-
-#currentStateLabel {
-  grid-row: 3;
-}
-
-#currentState {
-  grid-row: 3;
-}
-
-#currentZipLabel {
-  grid-row: 3;
-}
-
-#currentZip {
-  grid-row: 3;
-}
-
-#currentTenureLabel {
-  display: flex;
-  grid-row: 4;
-}
-
-#currentReasonLabel {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.formLine {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  max-width: 800px;
-  margin: auto;
-  padding: 5px 0px;
-}
-
 label {
   display: flex;
   margin: 0em 1em;
@@ -163,21 +34,6 @@ label {
   margin-bottom: 1rem;
 }
 
-#stepper,
-#completionNotice {
-  margin: 1.5rem 0px;
-}
-
-#applicantForm {
-  display: flex;
-  margin: auto;
-}
-
-@media (max-width: 575px) {
-  .MuiStepLabel-label {
-    display: none;
-  }
-}
 footer {
   display: flex;
   align-items: center;
@@ -188,6 +44,22 @@ footer {
 #applyButtonContainer {
   display: flex;
   justify-content: center;
+}
+
+#stepper,
+#completionNotice {
+  margin: 1.5rem 0px;
+}
+
+#applicantForm {
+  display: flex;
+  margin: auto;
+}
+
+@media only screen and (max-width: 575px) {
+  .MuiStepLabel-label {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=globals.css.map */
