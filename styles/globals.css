@@ -51,9 +51,15 @@ footer {
   margin: 1.5rem 0px;
 }
 
-@media (max-width: 575px) {
+.MuiStepLabel-label {
+  display: flex;
+  border: solid red;
+}
+
+@media (max-width: 625px) {
   .MuiStepLabel-label {
-    display: none;
+    display: none !important;
+    border: solid blue;
   }
 }
 

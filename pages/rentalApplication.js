@@ -888,8 +888,8 @@ const RentalApplication = () => {
 								return (
 									<Step key={label} {...stepProps}>
 										<StepLabel
-											// sx={{ display: { xs: 'none', sm: 'flex' } }}
 											{...labelProps}
+											// sx={{ display: { xs: 'none', sm: 'flex' } }}
 										>
 											{label}
 										</StepLabel>
