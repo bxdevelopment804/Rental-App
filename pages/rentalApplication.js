@@ -853,9 +853,9 @@ const RentalApplication = () => {
 
 	return (
 		<div>
-			<Head>
+			{/* <Head>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-			</Head>
+			</Head> */}
 			{/* <h1 id='pageHeader' className='formLine'>
 				Rental Application
 			</h1> */}
