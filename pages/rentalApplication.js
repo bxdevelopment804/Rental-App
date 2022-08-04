@@ -1,4 +1,5 @@
 import React, { useState, useRef, useContext } from 'react';
+import Head from 'next/head';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -19,6 +20,10 @@ import RentalHistory from '../components/RentalHistory';
 import EmploymentHistory from '../components/EmploymentHistory';
 import References from '../components/References';
 import Signature from '../components/Signature';
+
+// import useTheme from '@mui/material';
+// import useMediaQuery from '@mui/material';
+// import { useTheme, useMediaQuery } from '@material-ui/core';
 
 import { currentStepContext } from '../context/currentStepProvider';
 
@@ -98,6 +103,10 @@ function NumberFormatCustom(props) {
 }
 
 const RentalApplication = () => {
+	// const showText = useMediaQuery('(min-width:600px)');
+	// const theme = useTheme();
+	// const showText = useMediaQuery(theme.breakpoints.up('sm'));
+
 	//-------------------
 	//useTransition State
 	// const [isPending, startTransition] = useTransition();
@@ -844,6 +853,9 @@ const RentalApplication = () => {
 
 	return (
 		<div>
+			<Head>
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+			</Head>
 			{/* <h1 id='pageHeader' className='formLine'>
 				Rental Application
 			</h1> */}
@@ -875,7 +887,12 @@ const RentalApplication = () => {
 								}
 								return (
 									<Step key={label} {...stepProps}>
-										<StepLabel {...labelProps}>{label}</StepLabel>
+										<StepLabel
+											// sx={{ display: { xs: 'none', sm: 'flex' } }}
+											{...labelProps}
+										>
+											{label}
+										</StepLabel>
 									</Step>
 								);
 							})}
