@@ -4,7 +4,6 @@
 
 #applicantForm {
 	max-width: 600px;
-	// border: solid red;
 	margin: auto;
 }
 
@@ -13,11 +12,8 @@
 label {
 	display: flex;
 	margin: 0em 1em;
-	// border: solid blue;
-	// box-sizing: content-box;
 	box-sizing: border-box;
 	width: auto;
-	// width: fit-content;
 }
 
 #evictionButtonContainer {
@@ -37,22 +33,61 @@ label {
 //PersonalInformation.js, RentalHistory.js, EmploymentHistory.js, References.js, SignaturePage.js
 .stepHeader {
 	margin-bottom: 1rem;
-	// border: solid red;
 }
 
 //index.js
-footer {
+#homePageContainer {
+	position: relative;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin: 1rem 0rem;
+	align-items: center !important;
+	justify-content: center !important;
+	z-index: 10;
+}
+
+.heroText {
+	background-color: rgb(240, 248, 255, 0.6);
+	width: fit-content;
+	margin: auto !important;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 4px;
+	text-align: center !important;
 }
 
 #applyButtonContainer {
 	display: flex;
-	// align-items: center;
+	position: relative;
 	justify-content: center;
-	// border: solid red;
+}
+
+#videoContainer,
+.video {
+	position: fixed;
+	z-index: 1;
+	min-width: 100%;
+	min-height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.video {
+	// object-fit: cover;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+}
+
+footer {
+	display: flex;
+	// position: fixed;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0rem;
+	// z-index: 11;
 }
 
 //RentalApplication.js
@@ -60,15 +95,6 @@ footer {
 #completionNotice {
 	margin: 1.5rem 0px;
 }
-// .MuiStepLabel-label {
-// 	display: flex;
-// 	border: solid red;
-// }
-
-// #applicantForm {
-// 	display: flex;
-// 	margin: auto;
-// }
 
 @media (max-width: 625px) {
 	.MuiStepLabel-label {

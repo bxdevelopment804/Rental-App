@@ -1,5 +1,4 @@
 import React, { useState, useRef, useContext } from 'react';
-import Head from 'next/head';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -7,7 +6,6 @@ import {
 	Box,
 	Grid,
 	Snackbar,
-	Button,
 	Step,
 	Stepper,
 	StepLabel,
@@ -20,10 +18,6 @@ import RentalHistory from '../components/RentalHistory';
 import EmploymentHistory from '../components/EmploymentHistory';
 import References from '../components/References';
 import Signature from '../components/Signature';
-
-// import useTheme from '@mui/material';
-// import useMediaQuery from '@mui/material';
-// import { useTheme, useMediaQuery } from '@material-ui/core';
 
 import { currentStepContext } from '../context/currentStepProvider';
 
@@ -103,28 +97,6 @@ function NumberFormatCustom(props) {
 }
 
 const RentalApplication = () => {
-	// const showText = useMediaQuery('(min-width:600px)');
-	// const theme = useTheme();
-	// const showText = useMediaQuery(theme.breakpoints.up('sm'));
-
-	//-------------------
-	//useTransition State
-	// const [isPending, startTransition] = useTransition();
-
-	//---------------------------
-	//Navigation Button Functions
-	// const [applicationStep, setApplicationStep] = useState(0);
-	// function stepForward() {
-	// 	if (applicationStep < 4) {
-	// 		setApplicationStep(applicationStep + 1);
-	// 	}
-	// }
-	// function stepBackward() {
-	// 	if (applicationStep > 0) {
-	// 		setApplicationStep(applicationStep - 1);
-	// 	}
-	// }
-
 	//-------------------------------------
 	//Submitted form confirmation functions
 	const [toastOpen, setToastOpen] = useState(false);
@@ -178,14 +150,6 @@ const RentalApplication = () => {
 
 		handleClick();
 	};
-
-	//--------------------------------------------------------------------
-	//Testing the current state values.  FOR TESTING ONLY - DELETE LATER
-	// function logApplicantObject() {
-	// 	console.log('Applicant Object');
-	// 	console.table(state);
-	// 	// console.dir(state);
-	// }
 
 	const validationSchema = Yup.object({
 		applicantName: Yup.string()
@@ -853,20 +817,18 @@ const RentalApplication = () => {
 
 	return (
 		<div>
-			{/* <Head>
-				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-			</Head> */}
-			{/* <h1 id='pageHeader' className='formLine'>
-				Rental Application
-			</h1> */}
 			<Typography variant='h4' align='center'>
 				Rental Application
 			</Typography>
+
+			{/* -------------------------------------- */}
+			{/* TESTING LINES ONLY BELOW */}
 			{/* <div>Current Step: {currentStep[0]}</div> */}
 			{/* <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
 			{formik.errors[0] && <pre>Error Count: {formik.errors[0].length}</pre>} */}
 			{/* <pre>{JSON.stringify(formikRentalHistory.errors, null, 2)}</pre>
 			{formik.errors[0] && <pre>Error Count: {formik.errors[0].length}</pre>} */}
+			{/* -------------------------------------- */}
 
 			{/* <Box id='stepper' sx={{ width: '100%' }}> */}
 			<Box id='stepper' sx={{ flexGrow: 1 }}>
@@ -887,12 +849,7 @@ const RentalApplication = () => {
 								}
 								return (
 									<Step key={label} {...stepProps}>
-										<StepLabel
-											{...labelProps}
-											// sx={{ display: { xs: 'none', sm: 'flex' } }}
-										>
-											{label}
-										</StepLabel>
+										<StepLabel {...labelProps}>{label}</StepLabel>
 									</Step>
 								);
 							})}
@@ -991,41 +948,11 @@ const RentalApplication = () => {
 								interest in Fair Oak Farms!
 							</Typography>
 						</Grid>
-						{/* <Grid item xs={6} md={7}>
-							<ul>
-								<li>
-									<strong>{formikPersonalInformation.values[0]}</strong>&nbsp;
-									{formikPersonalInformation.values.applicantName}
-								</li>
-								<li>
-									<strong>Applicant Phone - </strong>&nbsp;
-									{formikPersonalInformation.values.applicantPhone}
-								</li>
-							</ul>
-
-							{JSON.stringify(formikPersonalInformation.values, null, 2)}
-						</Grid> */}
 					</Grid>
-					{/* <Grid item xs={6} md={12}>
-						<Box
-							sx={{
-								display: 'flex',
-								width: '100%',
-								justifyContent: 'center',
-							}}
-						>
-							<Button
-								variant='contained'
-								onClick={() => {
-									handleBack();
-								}}
-							>
-								Previous Page
-							</Button>
-						</Box>
-					</Grid> */}
 				</Box>
 
+				{/* -------------------------------------- */}
+				{/* TESTING LINES ONLY BELOW */}
 				{/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
 				{/* <div>formikPersonalInformation:</div>
 				<pre>{JSON.stringify(formikPersonalInformation.values, null, 2)}</pre> */}
@@ -1035,6 +962,7 @@ const RentalApplication = () => {
 				<pre>{JSON.stringify(formikReferences.values, null, 2)}</pre> */}
 				{/* <div>formikSignature:</div>
 				<pre>{JSON.stringify(formikSignature.values, null, 2)}</pre> */}
+				{/* -------------------------------------- */}
 			</form>
 
 			<Snackbar
@@ -1043,7 +971,6 @@ const RentalApplication = () => {
 				onClose={handleClose}
 				message='Application Submitted!'
 			/>
-			{/* <button onClick={logApplicantObject}>Console Log User Object</button> */}
 		</div>
 	);
 };

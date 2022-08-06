@@ -34,16 +34,55 @@ label {
   margin-bottom: 1rem;
 }
 
+#homePageContainer {
+  position: relative;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10;
+}
+
+.heroText {
+  background-color: rgba(240, 248, 255, 0.6);
+  width: fit-content;
+  margin: auto !important;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 4px;
+  text-align: center !important;
+}
+
+#applyButtonContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+#videoContainer,
+.video {
+  position: fixed;
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.video {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+}
+
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 1rem 0rem;
-}
-
-#applyButtonContainer {
-  display: flex;
-  justify-content: center;
 }
 
 #stepper,
