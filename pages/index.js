@@ -86,6 +86,7 @@ export default function Home() {
 								align='center'
 								className='heroText'
 								id='heroTitle'
+								sx={{ fontWeight: 'bold' }}
 							>
 								Welcome to the Fair Oak Farms Rental Application!
 							</Typography>
