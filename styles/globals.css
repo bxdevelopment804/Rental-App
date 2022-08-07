@@ -53,11 +53,11 @@ label {
 }
 
 #heroTitle {
-  font-size: clamp(20px, 1rem + 4vw, 50px);
+  font-size: calc(1rem + 4vw);
 }
 
 #heroText {
-  font-size: clamp(15px, 1rem + 2.5vw, 40px);
+  font-size: calc(1rem + 2.5vw);
 }
 
 #applyButtonContainer {
