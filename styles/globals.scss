@@ -54,6 +54,15 @@ label {
 	text-align: center !important;
 }
 
+// clamp(1rem, 2.5vw, 2rem)
+#heroTitle {
+	font-size: clamp(20px, calc(1rem + 4vw), 50px);
+}
+#heroText {
+	font-size: clamp(15px, calc(1rem + 2.5vw), 40px);
+	// font-size: calc(1rem + 3vw);
+}
+
 #applyButtonContainer {
 	display: flex;
 	position: relative;

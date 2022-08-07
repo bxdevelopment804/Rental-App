@@ -81,12 +81,22 @@ export default function Home() {
 				>
 					<Grid container spacing={2}>
 						<Grid item xs={12} md={12}>
-							<Typography variant='h2' align='center' className='heroText'>
+							<Typography
+								variant='h2'
+								align='center'
+								className='heroText'
+								id='heroTitle'
+							>
 								Welcome to the Fair Oak Farms Rental Application!
 							</Typography>
 						</Grid>
 						<Grid item xs={12} md={12}>
-							<Typography variant='h4' align='center' className='heroText'>
+							<Typography
+								variant='h4'
+								align='center'
+								className='heroText'
+								id='heroText'
+							>
 								Please click below if you would like to apply for one of our
 								properties!
 							</Typography>
