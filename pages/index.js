@@ -3,8 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Typography, Grid, Box, Button } from '@mui/material';
-import { red } from '@mui/material/colors';
-// import backgroundVideo01 from '../public/videos/video01.mp4';
 
 export default function Home() {
 	const movieArray = [
@@ -47,27 +45,27 @@ export default function Home() {
 					{/* <source src={movieArray[movieIndex]} type='video/mp4' /> */}
 					{/* <source src={movieArray[index]} type='video/mp4' /> */}
 					{index == 0 && (
-						<video autoPlay loop muted className='video'>
+						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
 					)}
 					{index == 1 && (
-						<video autoPlay loop muted className='video'>
+						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
 					)}
 					{index == 2 && (
-						<video autoPlay loop muted className='video'>
+						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
 					)}
 					{index == 3 && (
-						<video autoPlay loop muted className='video'>
+						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
 					)}
 					{index == 4 && (
-						<video autoPlay loop muted className='video'>
+						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
 					)}
@@ -86,7 +84,7 @@ export default function Home() {
 								align='center'
 								className='heroText'
 								id='heroTitle'
-								sx={{ fontWeight: 'bold' }}
+								// sx={{ fontWeight: 'bold' }}
 							>
 								Welcome to the Fair Oak Farms Rental Application!
 							</Typography>
