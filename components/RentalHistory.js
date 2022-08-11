@@ -33,6 +33,8 @@ const RentalHistory = (props) => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
+
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
@@ -56,6 +58,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.currentLandlord &&
 								props.formik.errors.currentLandlord
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							fullWidth
 							required
 						/>
@@ -81,6 +86,9 @@ const RentalHistory = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.currentLandlordPhone ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -101,6 +109,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.currentTenure &&
 								props.formik.errors.currentTenure
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -126,6 +137,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.currentReason &&
 								props.formik.errors.currentReason
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -146,6 +160,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.previousAddress &&
 								props.formik.errors.previousAddress
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -166,6 +183,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.previousCity &&
 								props.formik.errors.previousCity
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -187,6 +207,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.previousState &&
 								props.formik.errors.previousState
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -212,6 +235,9 @@ const RentalHistory = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.previousZip ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -232,6 +258,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.previousLandlord &&
 								props.formik.errors.previousLandlord
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -259,6 +288,9 @@ const RentalHistory = (props) => {
 									? true
 									: false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -279,6 +311,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.previousTenure &&
 								props.formik.errors.previousTenure
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -299,6 +334,9 @@ const RentalHistory = (props) => {
 								props.formik.touched.previousReason &&
 								props.formik.errors.previousReason
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>

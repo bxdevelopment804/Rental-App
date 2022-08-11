@@ -33,6 +33,8 @@ const EmploymentHistory = (props) => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
+
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
@@ -56,6 +58,9 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.presentEmployer &&
 								props.formik.errors.presentEmployer
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -75,6 +80,9 @@ const EmploymentHistory = (props) => {
 							helperText={
 								props.formik.touched.position && props.formik.errors.position
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -102,6 +110,9 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.monthlyIncome &&
 								props.formik.errors.monthlyIncome
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -129,6 +140,9 @@ const EmploymentHistory = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.employerPhone ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -137,7 +151,7 @@ const EmploymentHistory = (props) => {
 						<TextField
 							id='employerTenure'
 							name='employerTenure'
-							label='How long at current job?'
+							label='How many years at current job?'
 							value={props.formik.values.employerTenure}
 							onChange={props.formik.handleChange}
 							onBlur={props.formik.handleBlur}
@@ -149,6 +163,9 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.employerTenure &&
 								props.formik.errors.employerTenure
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -169,7 +186,10 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.otherIncome &&
 								props.formik.errors.otherIncome
 							}
-							required
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
+							// required
 							fullWidth
 						/>
 					</Grid>
@@ -189,6 +209,9 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.employerAddress &&
 								props.formik.errors.employerAddress
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -209,6 +232,9 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.employerCity &&
 								props.formik.errors.employerCity
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -230,8 +256,39 @@ const EmploymentHistory = (props) => {
 								props.formik.touched.employerState &&
 								props.formik.errors.employerState
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
+						/>
+					</Grid>
+					<Grid item xs={12} md={3}>
+						<TextField
+							fullWidth
+							id='employerZip'
+							name='employerZip'
+							label='Zip'
+							required
+							value={props.formik.values.employerZip}
+							onChange={props.formik.handleChange}
+							onBlur={props.formik.handleBlur}
+							error={
+								props.formik.touched.employerZip &&
+								Boolean(props.formik.errors.employerZip)
+							}
+							helperText={
+								props.formik.touched.employerZip &&
+								props.formik.errors.employerZip
+							}
+							inputProps={{ format: '#####' }}
+							InputProps={{ inputComponent: NumberFormatCustom }}
+							InputLabelProps={{
+								shrink: props.formik.values.employerZip ? true : false,
+							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>

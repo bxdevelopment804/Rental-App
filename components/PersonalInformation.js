@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -22,7 +22,6 @@ function NumberFormatCustom(props) {
 				});
 			}}
 			thousandSeparator
-			// isNumericString
 		/>
 	);
 }
@@ -33,12 +32,16 @@ const PersonalInformation = (props) => {
 	const handleNext = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
+
+	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
+
 	return (
-		<div>
+		<div id='informationPageContainer'>
 			<Box sx={{ flexGrow: 1 }}>
 				<Typography variant='h6' className='stepHeader'>
 					Personal Information
 				</Typography>
+
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={7}>
 						<TextField
@@ -58,6 +61,9 @@ const PersonalInformation = (props) => {
 								props.formik.touched.applicantName &&
 								props.formik.errors.applicantName
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={5}>
@@ -68,13 +74,13 @@ const PersonalInformation = (props) => {
 								// name='applicantDOB'
 								label='Applicant Birth Date'
 								type='date'
+								maxDate={new Date()}
 								required
 								value={props.formik.values.applicantDOB || null}
 								onChange={(value) => {
 									if (value !== null) {
 										props.formik.setFieldValue(
 											'applicantDOB',
-											// value.toString().slice(4, 15)
 											value
 												.toString()
 												.slice(4, 11)
@@ -107,6 +113,9 @@ const PersonalInformation = (props) => {
 											props.formik.touched.applicantDOB &&
 											props.formik.errors.applicantDOB
 										}
+										sx={{
+											backgroundColor: { backgroundColor },
+										}}
 									/>
 								)}
 							/>
@@ -135,6 +144,9 @@ const PersonalInformation = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.applicantPhone ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
@@ -156,6 +168,9 @@ const PersonalInformation = (props) => {
 								props.formik.touched.applicantEmail &&
 								props.formik.errors.applicantEmail
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
@@ -176,6 +191,9 @@ const PersonalInformation = (props) => {
 								props.formik.touched.currentAddress &&
 								props.formik.errors.currentAddress
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
@@ -196,6 +214,9 @@ const PersonalInformation = (props) => {
 								props.formik.touched.currentCity &&
 								props.formik.errors.currentCity
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>
@@ -217,6 +238,9 @@ const PersonalInformation = (props) => {
 								props.formik.touched.currentState &&
 								props.formik.errors.currentState
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>
@@ -242,6 +266,9 @@ const PersonalInformation = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.currentZip ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
@@ -262,6 +289,9 @@ const PersonalInformation = (props) => {
 								props.formik.touched.desiredLocation &&
 								props.formik.errors.desiredLocation
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							// inputProps={{ format: '#####' }}
 							// InputProps={{ inputComponent: NumberFormatCustom }}
 							// InputLabelProps={{

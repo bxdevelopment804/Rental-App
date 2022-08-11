@@ -36,54 +36,94 @@ label {
 
 #homePageContainer {
   position: relative;
+  box-sizing: border-box;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+  margin: -8px;
+}
+
+#heroTextContainer {
+  position: relative;
   display: flex;
   align-items: center !important;
   justify-content: center !important;
   z-index: 10;
+  color: #0b0870;
+  text-shadow: 1px 1px 1px black;
+  height: 100vh;
+  width: 100vw;
+  padding: 0px 4vw;
+  box-sizing: border-box;
 }
 
 .heroText {
-  background-color: rgba(240, 248, 255, 0.6);
   width: fit-content;
-  margin: auto !important;
   border-radius: 5px;
   box-sizing: border-box;
   padding: 4px;
-  text-align: center !important;
+  text-align: justify !important;
 }
 
 #heroTitle {
+  position: relative;
   font-size: clamp(20px, 1rem + 4vw, 50px);
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  box-sizing: border-box;
+  background-color: #2f3438;
+  margin-left: 5vw;
+  margin-bottom: -0.75rem;
+  padding: 0.75rem;
+  z-index: 5;
+  color: #e4bf79;
 }
 
-#heroText {
-  font-size: clamp(15px, 1rem + 2.5vw, 40px);
+#heroSubText {
+  position: relative;
+  font-size: clamp(10px, 1rem + 2.5vw, 35px);
+  font-family: "Quicksand", sans-serif;
+  background-color: #e4bf79;
+  margin-right: 5vw;
+  padding: 0.75rem;
+  z-index: 4;
+  color: #2f3438;
 }
 
 #applyButtonContainer {
   display: flex;
   position: relative;
-  justify-content: center;
+  margin-left: 50vw;
 }
 
-#videoContainer,
-.video {
-  position: fixed;
-  z-index: 1;
+#applyButton {
+  position: relative;
+  font-family: "Quicksand", sans-serif;
+  background-color: #2f3438;
+  color: #e4bf79;
+  text-shadow: 1px 1px 1px black;
+  margin: -0.5rem 0rem 0rem 0rem;
+  font-size: clamp(1rem, 0.5rem + 1.25vw, 1.2rem);
+  z-index: 5;
+}
+
+#backgroundImage {
+  position: relative;
+  display: block;
   min-width: 100%;
   min-height: 100%;
-  top: 0;
-  left: 0;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.video {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
+#backgroundContrast {
+  position: absolute;
+  background-color: rgba(240, 248, 255, 0.77);
+  z-index: 1;
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 footer {
@@ -93,9 +133,58 @@ footer {
   margin: 1rem 0rem;
 }
 
+#applicationPageContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  margin: -8px;
+  box-sizing: border-box;
+}
+
 #stepper,
 #completionNotice {
-  margin: 1.5rem 0px;
+  position: relative;
+  z-index: 10;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+#applicantForm {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  z-index: 10;
+  height: 100%;
+  margin-top: 20px;
+  padding: 0px 3vw;
+}
+
+#evictionContainer {
+  background-color: rgba(240, 248, 255, 0.95);
+  border-radius: 0.2rem;
+  width: fit-content;
+}
+
+.MuiInputLabel-root {
+  background-color: rgba(240, 248, 255, 0.95);
+  border-radius: 0.2rem;
+}
+
+.MuiFormHelperText-root {
+  width: fit-content;
+}
+
+.MuiFormControl-fullWidth {
+  color: rgba(240, 248, 255, 0.95);
+  border-radius: 0.2rem;
+}
+
+.MuiButton-root {
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 625px) {

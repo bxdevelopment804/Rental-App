@@ -1,41 +1,20 @@
-import React, { useState, useReducer, useRef, useContext } from 'react';
-
-import { useFormik, withFormik, Formik, getIn, FastField, Form } from 'formik';
-
-import * as Yup from 'yup';
-import {
-	Alert,
-	TextField,
-	Radio,
-	RadioGroup,
-	FormLabel,
-	FormControlLabel,
-	Box,
-	Grid,
-	Button,
-	Snackbar,
-	InputAdornment,
-	Typography,
-} from '@mui/material';
-
+import React, { useContext } from 'react';
+import { TextField, Box, Grid, Button, Typography } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import emailjs from '@emailjs/browser';
 import { currentStepContext } from '../context/currentStepProvider';
-// import '../styles/globals.css';
 
 const Signature = (props) => {
 	const currentStep = useContext(currentStepContext);
 
-	const handleNext = () => {
-		currentStep[1](currentStep[0] + 1);
-	};
 	const handleBack = () => {
 		currentStep[1](currentStep[0] - 1);
 	};
+
+	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (
 		<div>
@@ -68,6 +47,9 @@ const Signature = (props) => {
 							helperText={
 								props.formik.touched.signedBy && props.formik.errors.signedBy
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							fullWidth
 						/>
 					</Grid>
@@ -80,7 +62,7 @@ const Signature = (props) => {
 								label='Signature Date'
 								type='date'
 								// inputFormat='MM/dd/yyyy'
-								// minDate={new Date()}
+								minDate={new Date()}
 								required
 								value={props.formik.values.signatureDate || null}
 								onChange={(value) => {
@@ -117,6 +99,9 @@ const Signature = (props) => {
 											props.formik.touched.signatureDate &&
 											props.formik.errors.signatureDate
 										}
+										sx={{
+											backgroundColor: { backgroundColor },
+										}}
 									/>
 								)}
 							/>
@@ -146,6 +131,9 @@ const Signature = (props) => {
 								type='submit'
 								required
 								disabled={!(props.formik.isValid & props.formik.dirty)}
+								sx={{
+									backgroundColor: 'white',
+								}}
 							>
 								Submit Application
 							</Button>

@@ -1,9 +1,12 @@
 import React, { useState, useRef, useContext } from 'react';
-import { useFormik } from 'formik';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useFormik, resetForm } from 'formik';
 import * as Yup from 'yup';
 import {
 	Alert,
 	Box,
+	Button,
 	Grid,
 	Snackbar,
 	Step,
@@ -586,9 +589,8 @@ const RentalApplication = () => {
 		employerTenure: Yup.string()
 			.required('Required')
 			.max(20, 'Must be 20 characters or less'),
-		otherIncome: Yup.string()
-			.max(7, 'Response must be 7 characters or less')
-			.required('Required'),
+		otherIncome: Yup.string().max(7, 'Response must be 7 characters or less'),
+		// .required('Required'),
 		employerAddress: Yup.string()
 			.max(35, 'Must be 35 characters or less')
 			.required('Required'),
@@ -604,6 +606,11 @@ const RentalApplication = () => {
 			.min(2, 'Enter two letter state abbreviation.')
 			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
 			.required('Required'),
+		employerZip: Yup.string()
+			.max(5, 'Must be five digits.')
+			.min(5, 'Must be five digits.')
+			.matches(/^\d*$/, 'Enter five digit zip code.')
+			.required('Required'),
 	});
 
 	const formikEmploymentHistory = useFormik({
@@ -617,6 +624,7 @@ const RentalApplication = () => {
 			employerAddress: '',
 			employerCity: '',
 			employerState: '',
+			employerZip: '',
 		},
 		validationSchema: employmentHistoryValidationSchema,
 		onSubmit: (values) => {
@@ -690,12 +698,11 @@ const RentalApplication = () => {
 			.integer()
 			.required('Required'),
 		// .typeError('Value must be zero or greater.'),
-		otherApplicants: Yup.string()
-			.max(
-				35,
-				'Please enter the names of other applicants that need to be added to the lease.'
-			)
-			.required('Required'),
+		otherApplicants: Yup.string().max(
+			35,
+			'Please enter the names of other applicants that need to be added to the lease.'
+		),
+		// .required('Required'),
 		evictionStatus: Yup.boolean().required('Required').oneOf([true, false]),
 		// .nullable(),
 		depositMoney: Yup.string()
@@ -815,11 +822,24 @@ const RentalApplication = () => {
 		setActiveStep(0);
 	};
 
+	const returnHome = () => {
+		formik.resetForm();
+		currentStep[1](0);
+	};
+
 	return (
-		<div>
+		<div id='applicationPageContainer'>
 			<Typography variant='h4' align='center'>
 				Rental Application
 			</Typography>
+			<Box id='backgroundContrast'></Box>
+			<Box>
+				<Image
+					id='backgroundImage'
+					src='https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1600'
+					layout='fill'
+				/>
+			</Box>
 
 			{/* -------------------------------------- */}
 			{/* TESTING LINES ONLY BELOW */}
@@ -831,7 +851,8 @@ const RentalApplication = () => {
 			{/* -------------------------------------- */}
 
 			{/* <Box id='stepper' sx={{ width: '100%' }}> */}
-			<Box id='stepper' sx={{ flexGrow: 1 }}>
+			{/* <Box id='stepper' sx={{ flexGrow: 1 }}> */}
+			<Box id='stepper' sx={{ flexGrow: 0 }}>
 				{/* <Stepper activeStep={activeStep}> */}
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={12}>
@@ -863,6 +884,7 @@ const RentalApplication = () => {
 				{/* <form id='applicantForm' ref={form} onSubmit={formik.handleSubmit}> */}
 				{/* <form id='applicantForm' ref={form} onSubmit={handleSubmit}> */}
 				<Box
+					id='personalInformationContainer'
 					sx={{
 						flexGrow: 1,
 						...(currentStep[0] === 0
@@ -947,6 +969,21 @@ const RentalApplication = () => {
 								email notification to our management. Thank you for your
 								interest in Fair Oak Farms!
 							</Typography>
+						</Grid>
+						<Grid item xs={12} md={12}>
+							<Box sx={{ display: 'flex', justifyContent: 'center' }}>
+								<Link href='/'>
+									<Button
+										// disabled={!(props.formik.isValid & props.formik.dirty)}
+										variant='contained'
+										onClick={() => {
+											returnHome();
+										}}
+									>
+										Return Home
+									</Button>
+								</Link>
+							</Box>
 						</Grid>
 					</Grid>
 				</Box>

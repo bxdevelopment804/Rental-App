@@ -35,16 +35,16 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main>
-				<Box id='videoContainer'>
-					{/* <video autoPlay loop muted className='video'> */}
-					{/* LEAVING THESE LINES TO TO DETERMINE WHY THEY DIDN'T CHANGE BACKGROUND
+			<main id='homePageContainer'>
+				{/* <Box id='videoContainer'> */}
+				{/* <video autoPlay loop muted className='video'> */}
+				{/* LEAVING THESE LINES TO TO DETERMINE WHY THEY DIDN'T CHANGE BACKGROUND
 					AS INTENDED WHEN PART OF ABOVE VIDEO ELEMENT */}
-					{/* <source src={currentMovie} type='video/mp4' /> */}
-					{/* <source src={movieState} type='video/mp4' /> */}
-					{/* <source src={movieArray[movieIndex]} type='video/mp4' /> */}
-					{/* <source src={movieArray[index]} type='video/mp4' /> */}
-					{index == 0 && (
+				{/* <source src={currentMovie} type='video/mp4' /> */}
+				{/* <source src={movieState} type='video/mp4' /> */}
+				{/* <source src={movieArray[movieIndex]} type='video/mp4' /> */}
+				{/* <source src={movieArray[index]} type='video/mp4' /> */}
+				{/* {index == 0 && (
 						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
@@ -68,17 +68,29 @@ export default function Home() {
 						<video autoPlay loop muted playsInline className='video'>
 							<source src={movieArray[index]} type='video/mp4' />
 						</video>
-					)}
-					{/* </video> */}
+					)} */}
+				{/* </video> */}
+				{/* </Box> */}
+
+				{/* <Box id='backgroundContrast'></Box> */}
+
+				<Box>
+					<Image
+						id='backgroundImage'
+						src='https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1600'
+						layout='fill'
+					/>
 				</Box>
 				<Box
 					sx={{
 						flexGrow: 1,
 					}}
-					id='homePageContainer'
+					id='heroTextContainer'
 				>
-					<Grid container spacing={2}>
+					{/* <Grid container spacing={2}> */}
+					<Grid container>
 						<Grid item xs={12} md={12}>
+							{/* <Box id='heroTextBox'> */}
 							<Typography
 								variant='h2'
 								align='center'
@@ -86,25 +98,35 @@ export default function Home() {
 								id='heroTitle'
 								// sx={{ fontWeight: 'bold' }}
 							>
-								Welcome to the Fair Oak Farms Rental Application!
+								Welcome to Fair Oak Farm Rentals!
 							</Typography>
+							{/* </Box> */}
 						</Grid>
 						<Grid item xs={12} md={12}>
 							<Typography
 								variant='h4'
 								align='center'
 								className='heroText'
-								id='heroText'
+								id='heroSubText'
 							>
 								Please click below if you would like to apply for one of our
 								properties!
 							</Typography>
+							<Link href='/rentalApplication'>
+								<Box id='applyButtonContainer'>
+									<Button id='applyButton' variant='contained'>
+										Apply Here!
+									</Button>
+								</Box>
+							</Link>
 						</Grid>
-						<Link href='/rentalApplication'>
+						{/* <Link href='/rentalApplication'>
 							<Grid item xs={12} md={12} id='applyButtonContainer'>
-								<Button variant='contained'>Apply Here!</Button>
+								<Button id='applyButton' variant='contained'>
+									Apply Here!
+								</Button>
 							</Grid>
-						</Link>
+						</Link> */}
 					</Grid>
 				</Box>
 			</main>

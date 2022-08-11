@@ -9,6 +9,7 @@ import {
 	Radio,
 	RadioGroup,
 	Typography,
+	MenuItem,
 } from '@mui/material';
 import NumberFormat from 'react-number-format';
 import { currentStepContext } from '../context/currentStepProvider';
@@ -43,6 +44,8 @@ const References = (props) => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
+
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
@@ -66,6 +69,9 @@ const References = (props) => {
 								props.formik.touched.firstReferenceName &&
 								props.formik.errors.firstReferenceName
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -86,6 +92,9 @@ const References = (props) => {
 								props.formik.touched.firstReferenceTenure &&
 								props.formik.errors.firstReferenceTenure
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -106,6 +115,9 @@ const References = (props) => {
 								props.formik.touched.firstReferenceRelationship &&
 								props.formik.errors.firstReferenceRelationship
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -131,6 +143,9 @@ const References = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.firstReferencePhone ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -151,6 +166,9 @@ const References = (props) => {
 								props.formik.touched.secondReferenceName &&
 								props.formik.errors.secondReferenceName
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -171,6 +189,9 @@ const References = (props) => {
 								props.formik.touched.secondReferenceTenure &&
 								props.formik.errors.secondReferenceTenure
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -191,6 +212,9 @@ const References = (props) => {
 								props.formik.touched.secondReferenceRelationship &&
 								props.formik.errors.secondReferenceRelationship
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -216,6 +240,9 @@ const References = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.secondReferencePhone ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -236,6 +263,9 @@ const References = (props) => {
 								props.formik.touched.thirdReferenceName &&
 								props.formik.errors.thirdReferenceName
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -256,6 +286,9 @@ const References = (props) => {
 								props.formik.touched.thirdReferenceTenure &&
 								props.formik.errors.thirdReferenceTenure
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -276,6 +309,9 @@ const References = (props) => {
 								props.formik.touched.thirdReferenceRelationship &&
 								props.formik.errors.thirdReferenceRelationship
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -301,6 +337,9 @@ const References = (props) => {
 							InputLabelProps={{
 								shrink: props.formik.values.thirdReferencePhone ? true : false,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 						/>
@@ -312,7 +351,8 @@ const References = (props) => {
 							name='adultsNumber'
 							label='Total Number of Adults'
 							inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-							type='number'
+							// type='number'
+							select
 							value={props.formik.values.adultsNumber}
 							onChange={props.formik.handleChange}
 							onBlur={props.formik.handleBlur}
@@ -324,18 +364,37 @@ const References = (props) => {
 								props.formik.touched.adultsNumber &&
 								props.formik.errors.adultsNumber
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
-						/>
+						>
+							<MenuItem key={1} value='1'>
+								1
+							</MenuItem>
+							<MenuItem key={2} value='2'>
+								2
+							</MenuItem>
+							<MenuItem key={3} value='3'>
+								3
+							</MenuItem>
+							<MenuItem key={4} value='4'>
+								4
+							</MenuItem>
+							<MenuItem key={5} value='5'>
+								5
+							</MenuItem>
+						</TextField>
 					</Grid>
 					<Grid item xs={12} md={6}>
 						<TextField
-							// autoWidth
 							id='childrenNumber'
 							name='childrenNumber'
 							label='Total Number of Children Under Age 18'
 							inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-							type='number'
+							// type='number'
+							select
 							value={props.formik.values.childrenNumber}
 							onChange={props.formik.handleChange}
 							onBlur={props.formik.handleBlur}
@@ -347,9 +406,31 @@ const References = (props) => {
 								props.formik.touched.childrenNumber &&
 								props.formik.errors.childrenNumber
 							}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
-						/>
+						>
+							<MenuItem key={0} value='0'>
+								0
+							</MenuItem>
+							<MenuItem key={1} value='1'>
+								1
+							</MenuItem>
+							<MenuItem key={2} value='2'>
+								2
+							</MenuItem>
+							<MenuItem key={3} value='3'>
+								3
+							</MenuItem>
+							<MenuItem key={4} value='4'>
+								4
+							</MenuItem>
+							<MenuItem key={5} value='5'>
+								5
+							</MenuItem>
+						</TextField>
 					</Grid>
 					<Grid item xs={12} md={12}>
 						<TextField
@@ -367,7 +448,10 @@ const References = (props) => {
 								props.formik.touched.applicantDOB &&
 								props.formik.errors.otherApplicants
 							}
-							required
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
+							// required
 							fullWidth
 						/>
 					</Grid>
@@ -392,13 +476,19 @@ const References = (props) => {
 							InputProps={{
 								inputComponent: NumberFormatCustom,
 							}}
+							sx={{
+								backgroundColor: { backgroundColor },
+							}}
 							required
 							fullWidth
 							InputLabelProps={{ shrink: true }}
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<Box sx={{ display: 'flex', alignItems: 'center' }}>
+						<Box
+							id='evictionContainer'
+							sx={{ display: 'flex', alignItems: 'center' }}
+						>
 							<FormLabel id='evictionRadioButtons'>
 								Have you ever been party to an eviction?
 							</FormLabel>
@@ -411,7 +501,7 @@ const References = (props) => {
 								onChange={props.formik.handleChange}
 								onBlur={props.formik.handleBlur}
 							>
-								<div id='evictionButtonContainer'>
+								<Box id='evictionButtonContainer'>
 									<FormControlLabel
 										value='true'
 										control={<Radio />}
@@ -422,7 +512,7 @@ const References = (props) => {
 										control={<Radio />}
 										label='No'
 									/>
-								</div>
+								</Box>
 							</RadioGroup>
 						</Box>
 					</Grid>
