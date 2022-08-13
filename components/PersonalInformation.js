@@ -6,6 +6,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import NumberFormat from 'react-number-format';
 import { currentStepContext } from '../context/currentStepProvider';
 
+import CustomTextField from './CustomTextField';
+import CustomPhoneField from './CustomPhoneField';
+import CustomEmailField from './CustomEmailField';
+
 function NumberFormatCustom(props) {
 	const { inputRef, onChange, ...other } = props;
 
@@ -44,26 +48,11 @@ const PersonalInformation = (props) => {
 
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={7}>
-						<TextField
-							fullWidth
+						<CustomTextField
 							id='applicantName'
-							name='applicantName'
 							label='Applicant Name'
-							required
-							value={props.formik.values.applicantName}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.applicantName &&
-								Boolean(props.formik.errors.applicantName)
-							}
-							helperText={
-								props.formik.touched.applicantName &&
-								props.formik.errors.applicantName
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={5}>
@@ -103,7 +92,6 @@ const PersonalInformation = (props) => {
 										fullWidth
 										value={props.formik.values.applicantDOB || null}
 										name='applicantDOB'
-										// error={props.formik.errors.applicantDOB}
 										onBlur={props.formik.handleBlur}
 										error={
 											props.formik.touched.applicantDOB &&
@@ -148,75 +136,35 @@ const PersonalInformation = (props) => {
 								backgroundColor: { backgroundColor },
 							}}
 						/>
+						{/* <CustomPhoneField
+							id='applicantPhone'
+							label='Applicant Phone Number'
+							formik={props.formik}
+							mandatory='true'
+						/> */}
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
-							fullWidth
+						<CustomEmailField
 							id='applicantEmail'
-							name='applicantEmail'
 							label='Applicant Email'
-							required
-							type='email'
-							value={props.formik.values.applicantEmail}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.applicantEmail &&
-								Boolean(props.formik.errors.applicantEmail)
-							}
-							helperText={
-								props.formik.touched.applicantEmail &&
-								props.formik.errors.applicantEmail
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
-							fullWidth
+						<CustomTextField
 							id='currentAddress'
-							name='currentAddress'
 							label='Current Address'
-							required
-							value={props.formik.values.currentAddress}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.currentAddress &&
-								Boolean(props.formik.errors.currentAddress)
-							}
-							helperText={
-								props.formik.touched.currentAddress &&
-								props.formik.errors.currentAddress
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
-							fullWidth
+						<CustomTextField
 							id='currentCity'
-							name='currentCity'
 							label='City'
-							required
-							value={props.formik.values.currentCity}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.currentCity &&
-								Boolean(props.formik.errors.currentCity)
-							}
-							helperText={
-								props.formik.touched.currentCity &&
-								props.formik.errors.currentCity
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>
@@ -229,6 +177,14 @@ const PersonalInformation = (props) => {
 							required
 							value={props.formik.values.currentState}
 							onChange={props.formik.handleChange}
+							// onChange={(value) => {
+							// 	if (value !== null) {
+							// 		props.formik.setFieldValue(
+							// 			'currentState',
+							// 			value.toString().toUpperCase()
+							// 		);
+							// 	}
+							// }}
 							onBlur={props.formik.handleBlur}
 							error={
 								props.formik.touched.currentState &&
@@ -241,6 +197,7 @@ const PersonalInformation = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
+							inputProps={{ style: { textTransform: 'uppercase' } }}
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>
@@ -272,31 +229,11 @@ const PersonalInformation = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
-							fullWidth
+						<CustomTextField
 							id='desiredLocation'
-							name='desiredLocation'
 							label='Location Applying For?'
-							required
-							value={props.formik.values.desiredLocation}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.desiredLocation &&
-								Boolean(props.formik.errors.desiredLocation)
-							}
-							helperText={
-								props.formik.touched.desiredLocation &&
-								props.formik.errors.desiredLocation
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							// inputProps={{ format: '#####' }}
-							// InputProps={{ inputComponent: NumberFormatCustom }}
-							// InputLabelProps={{
-							// 	shrink: props.formik.values.currentZip ? true : false,
-							// }}
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>

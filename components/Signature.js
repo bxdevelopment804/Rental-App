@@ -24,12 +24,14 @@ const Signature = (props) => {
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={12}>
-						I CERTIFY that answers given herein are true and complete to the
-						best of my knowledge. I authorize investigation of all statements
-						contained in this application for tenant screening as may be
-						necessary in arriving at a tenant decision. I understand that the
-						landlord may terminate any rental agreement entered into for any
-						misrepresentations made above.
+						<Typography variant='subtitle1'>
+							I CERTIFY that answers given herein are true and complete to the
+							best of my knowledge. I authorize investigation of all statements
+							contained in this application for tenant screening as may be
+							necessary in arriving at a tenant decision. I understand that the
+							landlord may terminate any rental agreement entered into for any
+							misrepresentations made above.
+						</Typography>
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<TextField

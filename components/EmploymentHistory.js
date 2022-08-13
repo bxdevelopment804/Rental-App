@@ -259,6 +259,7 @@ const EmploymentHistory = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
+							inputProps={{ style: { textTransform: 'uppercase' } }}
 							required
 							fullWidth
 						/>

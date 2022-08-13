@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useFormik, resetForm } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import {
 	Alert,
 	Box,
@@ -23,6 +23,11 @@ import References from '../components/References';
 import Signature from '../components/Signature';
 
 import { currentStepContext } from '../context/currentStepProvider';
+import personalInformationValidationSchema from '../validations/personalInformationSchema';
+import rentalHistoryValidationSchema from '../validations/rentalHistorySchema';
+import employmentHistoryValidationSchema from '../validations/employmentHistorySchema';
+import referencesValidationSchema from '../validations/referencesSchema';
+import signatureValidationSchema from '../validations/signatureSchema';
 
 const MyTextInput = ({ label, ...props }) => {
 	// useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -115,15 +120,14 @@ const RentalApplication = () => {
 		setToastOpen(false);
 	};
 
-	function handleSubmit() {
-		// const handleSubmit = () => {
-		console.log('Form Submitted');
-		formik.handleSubmit();
-		<Alert severity='success'>This is a success alert — check it out!</Alert>;
-	}
+	// function handleSubmit() {
+	// 	console.log('Form Submitted');
+	// 	formik.handleSubmit();
+	// 	<Alert severity='success'>This is a success alert — check it out!</Alert>;
+	// }
 
 	//-------------------------
-	//EmailJs related functions
+	//EmailJs Related Functions
 	const form = useRef();
 	const sendEmail = (e) => {
 		e.preventDefault();
@@ -144,333 +148,13 @@ const RentalApplication = () => {
 				}
 			);
 
-		// console.log(JSON.stringify(form.current, null, 2));
-		// updateState(applicantObject);
-
-		// FOR TESTING ONLY - REMOVE WHEN COMPLETE!!!
 		currentStep[1](currentStep[0] + 1);
-		console.table(formikPersonalInformation.values);
 
 		handleClick();
 	};
 
-	const validationSchema = Yup.object({
-		applicantName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		applicantPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		applicantDOB: Yup.date()
-			// .default(() => new Date())
-			.required('Required'),
-		applicantEmail: Yup.string()
-			.email('Invalid email address')
-			.required('Required'),
-		currentAddress: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		currentCity: Yup.string()
-			.max(20, 'Must be 20 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		currentState: Yup.string()
-			.max(2, 'Enter two letter state abbreviation.')
-			.min(2, 'Enter two letter state abbreviation.')
-			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
-			.required('Required'),
-		currentZip: Yup.string()
-			.max(5, 'Must be five digits.')
-			.min(5, 'Must be five digits.')
-			.matches(/^\d*$/, 'Enter five digit zip code.')
-			.required('Required'),
-		desiredLocation: Yup.string()
-			.max(50, 'Must be 50 characters or less')
-			.required('Required'),
-		desiredLocation: Yup.string()
-			.max(50, 'Must be 50 characters or less')
-			.required('Required'),
-		currentLandlord: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		currentLandlordPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		// currentTenure: Yup.number('Please use numbers, not letters.')
-		currentTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		// .integer('Please use numbers, not letters.')
-		// .positive('No negative numbers allowed.')
-		// .max(30, 'Please validate this entry.'),
-		// .matches(/^\d*$/, 'Please use numbers, not letters.')
-		currentReason: Yup.string()
-			.max(50, 'Response must be 50 characters or less')
-			.required('Required'),
-		previousAddress: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		previousCity: Yup.string()
-			.max(20, 'Must be 20 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		previousState: Yup.string()
-			.max(2, 'Enter two letter state abbreviation.')
-			.min(2, 'Enter two letter state abbreviation.')
-			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
-			.required('Required'),
-		previousZip: Yup.string()
-			.max(5, 'Must be five digits.')
-			.min(5, 'Must be five digits.')
-			.matches(/^\d*$/, 'Enter five digit zip code.')
-			.required('Required'),
-		previousLandlord: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		previousLandlordPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		previousTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		previousReason: Yup.string()
-			.max(50, 'Response must be 50 characters or less')
-			.required('Required'),
-		presentEmployer: Yup.string()
-			.max(35, 'Response must be 35 characters or less')
-			.required('Required'),
-		position: Yup.string()
-			.max(35, 'Response must be 35 characters or less')
-			.required('Required'),
-		monthlyIncome: Yup.string()
-			.max(7, 'Response must be 7 characters or less')
-			.required('Required'),
-		employerPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		employerTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		otherIncome: Yup.string()
-			.max(7, 'Response must be 7 characters or less')
-			.required('Required'),
-		employerAddress: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		employerCity: Yup.string()
-			.max(20, 'Must be 20 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		employerState: Yup.string()
-			.max(2, 'Enter two letter state abbreviation.')
-			.min(2, 'Enter two letter state abbreviation.')
-			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
-			.required('Required'),
-		firstReferenceName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		firstReferenceTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		firstReferenceRelationship: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		firstReferencePhone: Yup.string()
-			.max(10, 'Must be 10 characters or less.  No symbols needed.')
-			.required('Required'),
-		secondReferenceName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		secondReferenceTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		secondReferenceRelationship: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		secondReferencePhone: Yup.string()
-			.max(10, 'Must be 10 characters or less.  No symbols needed.')
-			.required('Required'),
-		thirdReferenceName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		thirdReferenceTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		thirdReferenceRelationship: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		thirdReferencePhone: Yup.string()
-			.max(10, 'Must be 10 characters or less.  No symbols needed.')
-			.required('Required'),
-		adultsNumber: Yup.number()
-			// .max(1, 'Must be one character')
-			.positive()
-			.integer()
-			.required('Required'),
-		childrenNumber: Yup.number()
-			// .max(1, 'Must be one character')
-			.positive()
-			.integer()
-			.required('Required'),
-		otherApplicants: Yup.string()
-			.max(
-				35,
-				'Please enter the names of other applicants that need to be added to the lease.'
-			)
-			.required('Required'),
-		evictionStatus: Yup.boolean().required('Required').oneOf([true, false]),
-		// .nullable(),
-		depositMoney: Yup.string()
-			.max(7, 'Response must be 7 characters or less')
-			.required('Required'),
-		signedBy: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		signatureDate: Yup.date()
-			.default(() => new Date())
-			.required('Required'),
-	});
-
-	const formik = useFormik({
-		initialValues: {
-			applicantName: '',
-			applicantPhone: '',
-			applicantDOB: '',
-			applicantEmail: '',
-			currentAddress: '',
-			currentCity: '',
-			currentState: '',
-			currentZip: '',
-			desiredLocation: '',
-			currentLandlord: '',
-			currentLandlordPhone: '',
-			currentTenure: '',
-			currentReason: '',
-			previousAddress: '',
-			previousCity: '',
-			previousState: '',
-			previousZip: '',
-			previousLandlord: '',
-			previousLandlordPhone: '',
-			previousTenure: '',
-			previousReason: '',
-			presentEmployer: '',
-			position: '',
-			monthlyIncome: '',
-			employerPhone: '',
-			employerTenure: '',
-			otherIncome: '',
-			employerAddress: '',
-			employerCity: '',
-			employerState: '',
-			firstReferenceName: '',
-			firstReferenceTenure: '',
-			firstReferenceRelationship: '',
-			firstReferencePhone: '',
-			secondReferenceName: '',
-			secondReferenceTenure: '',
-			secondReferenceRelationship: '',
-			secondReferencePhone: '',
-			thirdReferenceName: '',
-			thirdReferenceTenure: '',
-			thirdReferenceRelationship: '',
-			thirdReferencePhone: '',
-			adultsNumber: 1,
-			childrenNumber: 0,
-			otherApplicants: '',
-			evictionStatus: false,
-			depositMoney: '',
-			signedBy: '',
-			signatureDate: '',
-		},
-		validationSchema: validationSchema,
-		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
-			// sendEmail();
-			console.log(values);
-		},
-	});
-
-	const personalInformationValidationSchema = Yup.object({
-		applicantName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		applicantPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		applicantDOB: Yup.date()
-			// .default(() => new Date())
-			.required('Required'),
-		applicantEmail: Yup.string()
-			.email('Invalid email address')
-			.required('Required'),
-		currentAddress: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		currentCity: Yup.string()
-			.max(20, 'Must be 20 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		currentState: Yup.string()
-			.max(2, 'Enter two letter state abbreviation.')
-			.min(2, 'Enter two letter state abbreviation.')
-			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
-			.required('Required'),
-		currentZip: Yup.string()
-			.max(5, 'Must be five digits.')
-			.min(5, 'Must be five digits.')
-			.matches(/^\d*$/, 'Enter five digit zip code.')
-			.required('Required'),
-		desiredLocation: Yup.string()
-			.max(50, 'Must be 50 characters or less')
-			.required('Required'),
-	});
-
+	//-------------------------
+	//Formik Default Values
 	const formikPersonalInformation = useFormik({
 		initialValues: {
 			applicantName: '',
@@ -489,64 +173,6 @@ const RentalApplication = () => {
 			console.log(values);
 			handleNext();
 		},
-	});
-
-	const rentalHistoryValidationSchema = Yup.object({
-		currentLandlord: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		currentLandlordPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		// currentTenure: Yup.number('Please use numbers, not letters.')
-		currentTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		// .integer('Please use numbers, not letters.')
-		// .positive('No negative numbers allowed.')
-		// .max(30, 'Please validate this entry.'),
-		// .matches(/^\d*$/, 'Please use numbers, not letters.')
-		currentReason: Yup.string()
-			.max(50, 'Response must be 50 characters or less')
-			.required('Required'),
-		previousAddress: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		previousCity: Yup.string()
-			.max(20, 'Must be 20 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		previousState: Yup.string()
-			.max(2, 'Enter two letter state abbreviation.')
-			.min(2, 'Enter two letter state abbreviation.')
-			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
-			.required('Required'),
-		previousZip: Yup.string()
-			.max(5, 'Must be five digits.')
-			.min(5, 'Must be five digits.')
-			.matches(/^\d*$/, 'Enter five digit zip code.')
-			.required('Required'),
-		previousLandlord: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		previousLandlordPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		previousTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		previousReason: Yup.string()
-			.max(50, 'Response must be 50 characters or less')
-			.required('Required'),
 	});
 
 	const formikRentalHistory = useFormik({
@@ -572,47 +198,6 @@ const RentalApplication = () => {
 		},
 	});
 
-	const employmentHistoryValidationSchema = Yup.object({
-		presentEmployer: Yup.string()
-			.max(35, 'Response must be 35 characters or less')
-			.required('Required'),
-		position: Yup.string()
-			.max(35, 'Response must be 35 characters or less')
-			.required('Required'),
-		monthlyIncome: Yup.string()
-			.max(7, 'Response must be 7 characters or less')
-			.required('Required'),
-		employerPhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		employerTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		otherIncome: Yup.string().max(7, 'Response must be 7 characters or less'),
-		// .required('Required'),
-		employerAddress: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		employerCity: Yup.string()
-			.max(20, 'Must be 20 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		employerState: Yup.string()
-			.max(2, 'Enter two letter state abbreviation.')
-			.min(2, 'Enter two letter state abbreviation.')
-			.matches(/^[a-zA-Z]+$/, 'Enter two letter state abbreviation.')
-			.required('Required'),
-		employerZip: Yup.string()
-			.max(5, 'Must be five digits.')
-			.min(5, 'Must be five digits.')
-			.matches(/^\d*$/, 'Enter five digit zip code.')
-			.required('Required'),
-	});
-
 	const formikEmploymentHistory = useFormik({
 		initialValues: {
 			presentEmployer: '',
@@ -632,82 +217,6 @@ const RentalApplication = () => {
 			console.log(values);
 			handleNext();
 		},
-	});
-
-	const referencesValidationSchema = Yup.object({
-		firstReferenceName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		firstReferenceTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		firstReferenceRelationship: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		firstReferencePhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		secondReferenceName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		secondReferenceTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		secondReferenceRelationship: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		secondReferencePhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		thirdReferenceName: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		thirdReferenceTenure: Yup.string()
-			.required('Required')
-			.max(20, 'Must be 20 characters or less'),
-		thirdReferenceRelationship: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.required('Required'),
-		thirdReferencePhone: Yup.string()
-			.max(10, 'Must be 10 digits.')
-			.min(10, 'Must be 10 digits.')
-			.required('Required'),
-		adultsNumber: Yup.number()
-			// .max(1, 'Must be one character')
-			.positive('Value must be zero or greater.')
-			.integer()
-			.required('Required'),
-		childrenNumber: Yup.number()
-			// .max(1, 'Must be one character')
-			// .positive()
-			.moreThan(-1, 'Value must be zero or greater.')
-			.integer()
-			.required('Required'),
-		// .typeError('Value must be zero or greater.'),
-		otherApplicants: Yup.string().max(
-			35,
-			'Please enter the names of other applicants that need to be added to the lease.'
-		),
-		// .required('Required'),
-		evictionStatus: Yup.boolean().required('Required').oneOf([true, false]),
-		// .nullable(),
-		depositMoney: Yup.string()
-			.max(7, 'Response must be 7 characters or less')
-			.required('Required'),
 	});
 
 	const formikReferences = useFormik({
@@ -736,19 +245,6 @@ const RentalApplication = () => {
 			console.log(values);
 			handleNext();
 		},
-	});
-
-	const signatureValidationSchema = Yup.object({
-		signedBy: Yup.string()
-			.max(35, 'Must be 35 characters or less')
-			.matches(
-				/^[a-zA-Z ']+$/,
-				'No numbers or symbols are needed for this field.'
-			)
-			.required('Required'),
-		signatureDate: Yup.date()
-			// .default(() => new Date())
-			.required('Required'),
 	});
 
 	const formikSignature = useFormik({
@@ -798,33 +294,37 @@ const RentalApplication = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
 
-	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-		currentStep[1](currentStep[0] - 1);
-	};
+	// const handleBack = () => {
+	// 	setActiveStep((prevActiveStep) => prevActiveStep - 1);
+	// 	currentStep[1](currentStep[0] - 1);
+	// };
 
-	const handleSkip = () => {
-		if (!isStepOptional(activeStep)) {
-			// You probably want to guard against something like this,
-			// it should never occur unless someone's actively trying to break something.
-			throw new Error("You can't skip a step that isn't optional.");
-		}
+	// const handleSkip = () => {
+	// 	if (!isStepOptional(activeStep)) {
+	// 		// You probably want to guard against something like this,
+	// 		// it should never occur unless someone's actively trying to break something.
+	// 		throw new Error("You can't skip a step that isn't optional.");
+	// 	}
 
-		setActiveStep((prevActiveStep) => prevActiveStep + 1);
-		setSkipped((prevSkipped) => {
-			const newSkipped = new Set(prevSkipped.values());
-			newSkipped.add(activeStep);
-			return newSkipped;
-		});
-	};
+	// 	setActiveStep((prevActiveStep) => prevActiveStep + 1);
+	// 	setSkipped((prevSkipped) => {
+	// 		const newSkipped = new Set(prevSkipped.values());
+	// 		newSkipped.add(activeStep);
+	// 		return newSkipped;
+	// 	});
+	// };
 
-	const handleReset = () => {
-		setActiveStep(0);
-	};
+	// const handleReset = () => {
+	// 	setActiveStep(0);
+	// };
 
 	const returnHome = () => {
-		formik.resetForm();
 		currentStep[1](0);
+		formikPersonalInformation.resetForm();
+		formikRentalHistory.resetForm();
+		formikEmploymentHistory.resetForm();
+		formikReferences.resetForm();
+		formikSignature.resetForm();
 	};
 
 	return (
@@ -841,19 +341,7 @@ const RentalApplication = () => {
 				/>
 			</Box>
 
-			{/* -------------------------------------- */}
-			{/* TESTING LINES ONLY BELOW */}
-			{/* <div>Current Step: {currentStep[0]}</div> */}
-			{/* <pre>{JSON.stringify(formik.errors, null, 2)}</pre>
-			{formik.errors[0] && <pre>Error Count: {formik.errors[0].length}</pre>} */}
-			{/* <pre>{JSON.stringify(formikRentalHistory.errors, null, 2)}</pre>
-			{formik.errors[0] && <pre>Error Count: {formik.errors[0].length}</pre>} */}
-			{/* -------------------------------------- */}
-
-			{/* <Box id='stepper' sx={{ width: '100%' }}> */}
-			{/* <Box id='stepper' sx={{ flexGrow: 1 }}> */}
 			<Box id='stepper' sx={{ flexGrow: 0 }}>
-				{/* <Stepper activeStep={activeStep}> */}
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={12}>
 						<Stepper activeStep={currentStep[0]}>
@@ -879,10 +367,7 @@ const RentalApplication = () => {
 				</Grid>
 			</Box>
 
-			{/* BELOW LINE IS FUNCTIONAL!! */}
 			<form id='applicantForm' ref={form} onSubmit={sendEmail}>
-				{/* <form id='applicantForm' ref={form} onSubmit={formik.handleSubmit}> */}
-				{/* <form id='applicantForm' ref={form} onSubmit={handleSubmit}> */}
 				<Box
 					id='personalInformationContainer'
 					sx={{
@@ -961,10 +446,7 @@ const RentalApplication = () => {
 				>
 					<Grid id='completionNotice' container spacing={2}>
 						<Grid item xs={12} md={12}>
-							<Typography
-								variant='subtitle1'
-								//  align='center'
-							>
+							<Typography variant='h6'>
 								Your application is complete! You will receive a copy of the
 								email notification to our management. Thank you for your
 								interest in Fair Oak Farms!
@@ -972,9 +454,8 @@ const RentalApplication = () => {
 						</Grid>
 						<Grid item xs={12} md={12}>
 							<Box sx={{ display: 'flex', justifyContent: 'center' }}>
-								<Link href='/'>
+								<Link href='/' exact>
 									<Button
-										// disabled={!(props.formik.isValid & props.formik.dirty)}
 										variant='contained'
 										onClick={() => {
 											returnHome();
@@ -987,19 +468,6 @@ const RentalApplication = () => {
 						</Grid>
 					</Grid>
 				</Box>
-
-				{/* -------------------------------------- */}
-				{/* TESTING LINES ONLY BELOW */}
-				{/* <pre>{JSON.stringify(formik.values, null, 2)}</pre> */}
-				{/* <div>formikPersonalInformation:</div>
-				<pre>{JSON.stringify(formikPersonalInformation.values, null, 2)}</pre> */}
-				{/* <div>formikRentalHistory:</div>
-				<pre>{JSON.stringify(formikRentalHistory.values, null, 2)}</pre> */}
-				{/* <div>formikReferences:</div>
-				<pre>{JSON.stringify(formikReferences.values, null, 2)}</pre> */}
-				{/* <div>formikSignature:</div>
-				<pre>{JSON.stringify(formikSignature.values, null, 2)}</pre> */}
-				{/* -------------------------------------- */}
 			</form>
 
 			<Snackbar
@@ -1008,6 +476,14 @@ const RentalApplication = () => {
 				onClose={handleClose}
 				message='Application Submitted!'
 			/>
+			<Box id='applicationPageFooter'>
+				<Typography variant='subtitle2'>
+					Created by{' '}
+					<strong>
+						<i>BX Development</i>
+					</strong>
+				</Typography>
+			</Box>
 		</div>
 	);
 };

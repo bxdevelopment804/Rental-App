@@ -210,6 +210,7 @@ const RentalHistory = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
+							inputProps={{ style: { textTransform: 'uppercase' } }}
 							required
 							fullWidth
 						/>

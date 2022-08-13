@@ -1,12 +1,11 @@
 $defaultFont: 'Quicksand', sans-serif;
-// $defaultFontColor: #ededed;
 $defaultFontColor: rgb(11, 8, 112);
 $backgroundColor: rgba(47, 52, 56, 1);
 $backgroundAccent: rgba(228, 191, 121, 1);
 
-#pageHeader {
-	justify-content: center;
-}
+// #pageHeader {
+// 	justify-content: center;
+// }
 
 #applicantForm {
 	max-width: 600px;
@@ -46,10 +45,10 @@ label {
 //index.js
 #homePageContainer {
 	position: relative;
-	// background-color: rgb(240, 248, 255, 0.5);
-	// background: rgb(240, 248, 255, 0.5);
-	// color:rgb(240, 248, 255, 0.5)
-	// border: solid red;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	box-sizing: border-box;
 	z-index: 2;
 	height: 100vh;
@@ -65,7 +64,6 @@ label {
 	z-index: 10;
 	color: $defaultFontColor;
 	text-shadow: 1px 1px 1px black;
-	// border: solid blue;
 	height: 100vh;
 	width: 100vw;
 	padding: 0px 4vw;
@@ -73,24 +71,18 @@ label {
 }
 
 .heroText {
-	// background-color: rgb(240, 248, 255, 0.5);
 	width: fit-content;
-	// width: auto;
-	// margin: auto !important;
 	border-radius: 5px;
 	box-sizing: border-box;
 	padding: 4px;
 	text-align: justify !important;
-	// font-family: 'Quicksand', sans-serif;
 }
 
 #heroTitle {
 	position: relative;
 	font-size: clamp(20px, calc(1rem + 4vw), 50px);
-	// font-size: calc(1rem + 4vw);
 	font-family: $defaultFont;
 	font-weight: 600;
-	// border: solid red;
 	box-sizing: border-box;
 	background-color: $backgroundColor;
 	margin-left: 5vw;
@@ -101,16 +93,10 @@ label {
 }
 #heroSubText {
 	position: relative;
-	// display: inline-block;
 	font-size: clamp(10px, calc(1rem + 2.5vw), 35px);
-	// font-size: calc(1rem + 2.5vw);
 	font-family: $defaultFont;
-	// border: solid blue;
-	// padding-top: 35vh;
-	// top: 45%;
 	background-color: $backgroundAccent;
 	margin-right: 5vw;
-	// text-align: justify;
 	padding: 0.75rem;
 	z-index: 4;
 	color: $backgroundColor;
@@ -119,11 +105,7 @@ label {
 #applyButtonContainer {
 	display: flex;
 	position: relative;
-	// justify-content: flex-end;
 	margin-left: 50vw;
-	// border: solid red;
-	// justify-content: center;
-	// color: $defaultFontColor;
 }
 
 #applyButton {
@@ -137,35 +119,12 @@ label {
 	z-index: 5;
 }
 
-// #videoContainer,
-// .video {
-// 	position: fixed;
-// 	z-index: 1;
-// 	min-width: 100%;
-// 	min-height: 100%;
-// 	top: 0;
-// 	left: 0;
-// }
-
-// .video {
-// 	// object-fit: cover;
-// 	top: 50%;
-// 	left: 50%;
-// 	transform: translate(-50%, -50%);
-// 	-webkit-transform: translateX(-50%) translateY(-50%);
-// 	-moz-transform: translateX(-50%) translateY(-50%);
-// 	-ms-transform: translateX(-50%) translateY(-50%);
-// 	-o-transform: translateX(-50%) translateY(-50%);
-// }
-
 #backgroundImage {
 	position: relative;
 	display: block;
 	min-width: 100%;
 	min-height: 100%;
-	// border: solid red;
 	object-fit: cover;
-	// background-color: rgb(240, 248, 255, 0.5);
 	z-index: 0;
 }
 
@@ -179,16 +138,19 @@ label {
 	box-sizing: border-box;
 }
 
-footer {
+#homePageFooter {
 	display: flex;
-	// position: fixed;
-	align-items: center;
-	justify-content: center;
-	margin: 1rem 0rem;
-	// z-index: 11;
+	position: relative;
+	color: $backgroundColor;
+	background-color: $backgroundAccent;
+	margin-bottom: 0rem;
+	bottom: 0px;
+	border-radius: 2rem;
+	padding: 0rem 0.5rem;
+	margin: 0rem 0rem 0.5rem 0rem;
 }
 
-//RentalApplication.js
+//rentalApplication.js
 #applicationPageContainer {
 	display: flex;
 	flex-direction: column;
@@ -220,11 +182,35 @@ footer {
 	padding: 0px 3vw;
 }
 
+#applicationPageFooter {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	bottom: 0rem;
+	z-index: 2;
+	background-color: white;
+	border: solid grey 1px;
+	width: fit-content;
+	border-radius: 2rem;
+	padding: 0rem 0.5rem;
+	margin: 0rem auto 1rem auto;
+}
+
 // References.js
 #evictionContainer {
 	background-color: rgb(240, 248, 255, 0.95);
 	border-radius: 0.2rem;
 	width: fit-content;
+}
+// ------------------
+// CustomTextField.js
+#customTextFieldContainer {
+	// display: flex;
+	// position: relative;
+	// z-index: 9;
+	// border: solid blue;
+	height: 100%;
 }
 
 // Application Pages
