@@ -4,7 +4,7 @@
 
 1.  **What Does This Rental App Do?**
 
-    Developed for a local business, this allows potential tenants to apply online for one of their properties in lieu of the paper applications that were previously used.
+    Developed for a local business, this allows potential tenants to apply online for one of their properties in lieu of the paper applications that were previously used. (Final details currently being discussed with client.)
 
 2.  **Design Intent**
 
