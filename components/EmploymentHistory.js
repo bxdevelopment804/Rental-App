@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 import NumberFormat from 'react-number-format';
+
 import { currentStepContext } from '../context/currentStepProvider';
 import CustomTextField from './CustomTextField';
 import CustomPhoneField from './CustomPhoneField';
 
+//Facilitates the use of custom number formats in certain fields.  forwardRef needed to comply with MUI V5 migration.  https://mui.com/pt/material-ui/migration/v5-component-changes/#forward-ref-instead-of-inputref-prop
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 	props,
 	ref
@@ -30,13 +32,17 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 const EmploymentHistory = (props) => {
 	const currentStep = useContext(currentStepContext);
 
+	//Moves to next step of application after clicking 'Next' button.
 	const handleNext = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
+
+	//Moves to previous step of application after clicking 'Previous' button.
 	const handleBack = () => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	//Opaque background color for form fields.
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (
@@ -97,32 +103,6 @@ const EmploymentHistory = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						{/* <TextField
-							id='employerPhone'
-							name='employerPhone'
-							label='Employer Phone Number'
-							value={props.formik.values.employerPhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.employerPhone &&
-								Boolean(props.formik.errors.employerPhone)
-							}
-							helperText={
-								props.formik.touched.employerPhone &&
-								props.formik.errors.employerPhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.employerPhone ? true : false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
-						/> */}
 						<CustomPhoneField
 							id='employerPhone'
 							label='Employer Phone Number'
@@ -182,7 +162,6 @@ const EmploymentHistory = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
-							// inputProps={{ style: { textTransform: 'uppercase' } }}
 							required
 							fullWidth
 						/>

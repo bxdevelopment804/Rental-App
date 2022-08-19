@@ -4,12 +4,13 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import NumberFormat from 'react-number-format';
-import { currentStepContext } from '../context/currentStepProvider';
 
+import { currentStepContext } from '../context/currentStepProvider';
 import CustomTextField from './CustomTextField';
 import CustomEmailField from './CustomEmailField';
 import CustomPhoneField from './CustomPhoneField';
 
+//Facilitates the use of custom number formats in certain fields.  forwardRef needed to comply with MUI V5 migration.  https://mui.com/pt/material-ui/migration/v5-component-changes/#forward-ref-instead-of-inputref-prop
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 	props,
 	ref
@@ -35,10 +36,12 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 const PersonalInformation = (props) => {
 	const currentStep = useContext(currentStepContext);
 
+	//Moves to next step of application after clicking 'Next' button.
 	const handleNext = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
 
+	//Opaque background color for form fields.
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (
@@ -51,7 +54,6 @@ const PersonalInformation = (props) => {
 				>
 					Personal Information
 				</Typography>
-
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={7}>
 						<CustomTextField
@@ -169,7 +171,6 @@ const PersonalInformation = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
-							// inputProps={{ style: { textTransform: 'uppercase' } }}
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>

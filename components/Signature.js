@@ -3,16 +3,19 @@ import { TextField, Box, Grid, Button, Typography } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 import { currentStepContext } from '../context/currentStepProvider';
 import CustomTextField from './CustomTextField';
 
 const Signature = (props) => {
 	const currentStep = useContext(currentStepContext);
 
+	//Moves to previous step of application after clicking 'Previous' button.
 	const handleBack = () => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	//Opaque background color for form fields.
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (

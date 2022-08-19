@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 import NumberFormat from 'react-number-format';
+
 import { currentStepContext } from '../context/currentStepProvider';
 import CustomTextField from './CustomTextField';
 import CustomPhoneField from './CustomPhoneField';
 
+//Facilitates the use of custom number formats in certain fields.  forwardRef needed to comply with MUI V5 migration.  https://mui.com/pt/material-ui/migration/v5-component-changes/#forward-ref-instead-of-inputref-prop
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 	props,
 	ref
@@ -30,13 +32,17 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 const RentalHistory = (props) => {
 	const currentStep = useContext(currentStepContext);
 
+	//Moves to next step of application after clicking 'Next' button.
 	const handleNext = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
+
+	//Moves to previous step of application after clicking 'Previous' button.
 	const handleBack = () => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	//Opaque background color for form fields.
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (
@@ -59,32 +65,6 @@ const RentalHistory = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						{/* <TextField
-							id='currentLandlordPhone'
-							name='currentLandlordPhone'
-							label="Current Landlord's Phone"
-							value={props.formik.values.currentLandlordPhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.currentLandlordPhone &&
-								Boolean(props.formik.errors.currentLandlordPhone)
-							}
-							helperText={
-								props.formik.touched.currentLandlordPhone &&
-								props.formik.errors.currentLandlordPhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.currentLandlordPhone ? true : false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
-						/> */}
 						<CustomPhoneField
 							id='currentLandlordPhone'
 							label="Current Landlord's Phone"
@@ -144,7 +124,6 @@ const RentalHistory = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
-							// inputProps={{ style: { textTransform: 'uppercase' } }}
 							required
 							fullWidth
 						/>
@@ -186,34 +165,6 @@ const RentalHistory = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						{/* <TextField
-							id='previousLandlordPhone'
-							name='previousLandlordPhone'
-							label="Previous Landlord's Phone"
-							value={props.formik.values.previousLandlordPhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.previousLandlordPhone &&
-								Boolean(props.formik.errors.previousLandlordPhone)
-							}
-							helperText={
-								props.formik.touched.previousLandlordPhone &&
-								props.formik.errors.previousLandlordPhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.previousLandlordPhone
-									? true
-									: false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
-						/> */}
 						<CustomPhoneField
 							id='previousLandlordPhone'
 							label="Previous Landlord's Phone"

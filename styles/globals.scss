@@ -4,17 +4,6 @@ $defaultFontColor: rgb(11, 8, 112);
 $backgroundColor: rgba(47, 52, 56, 1);
 $backgroundAccent: rgba(228, 191, 121, 1);
 
-//-------------------------------
-//WHAT FILE IS THIS ATTACHED TO??
-label {
-	display: flex;
-	margin: 0em 1em;
-	box-sizing: border-box;
-	width: auto;
-	// font-family: $defaultFont;
-	// border: solid red;
-}
-
 // --------
 // index.js
 #homePageContainer {
@@ -133,7 +122,6 @@ label {
 	position: relative;
 	width: 100vw;
 	height: auto;
-	// height: 100%;
 	min-height: 100vh;
 	margin: -8px;
 	box-sizing: border-box;
@@ -145,7 +133,6 @@ label {
 	align-items: stretch;
 	z-index: 10;
 	height: 100%;
-	// margin-top: 20px;
 	padding: 0px 3vw;
 	max-width: 600px;
 	margin: 20px auto 0px auto;
@@ -185,6 +172,13 @@ label {
 	border-radius: 0.2rem;
 	width: fit-content;
 
+	#evictionRadioButtons {
+		display: flex;
+		margin: 0em 1em;
+		box-sizing: border-box;
+		width: auto;
+	}
+
 	#evictionButtonContainer {
 		display: flex;
 	}
@@ -192,11 +186,7 @@ label {
 
 // -------------
 // Signatures.js
-#submitButton
-// #certificationParagraph,
-// #referenceHeader,
-// #submitButtonContainer
-{
+#submitButton {
 	padding: 0em 1em;
 	box-sizing: border-box;
 }
@@ -204,10 +194,6 @@ label {
 // ------------------
 // CustomTextField.js
 #customTextFieldContainer {
-	// display: flex;
-	// position: relative;
-	// z-index: 9;
-	// border: solid blue;
 	height: 100%;
 }
 

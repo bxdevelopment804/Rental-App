@@ -33,10 +33,12 @@ const RentalApplication = () => {
 	//Confirmation Toast Functions
 	const [toastOpen, setToastOpen] = useState(false);
 
+	//Opens confirmation toast
 	const handleClick = () => {
 		setToastOpen(true);
 	};
 
+	//Closes confirmation toast if user clicks on something else
 	const handleClose = (reason) => {
 		if (reason === 'clickaway') {
 			return;
@@ -47,6 +49,8 @@ const RentalApplication = () => {
 	//-------------------------
 	//EmailJs Related Functions
 	const form = useRef();
+
+	//Sends email as setup in EmailJs
 	const sendEmail = (e) => {
 		e.preventDefault();
 
@@ -66,8 +70,10 @@ const RentalApplication = () => {
 				}
 			);
 
+		//Advances to confirmation page
 		currentStep[1](currentStep[0] + 1);
 
+		//Opens confirmation toast
 		handleClick();
 	};
 
@@ -191,14 +197,17 @@ const RentalApplication = () => {
 	const currentStep = useContext(currentStepContext);
 	const [skipped, setSkipped] = React.useState(new Set());
 
+	//Currently unused, no optional steps.
 	const isStepOptional = (step) => {
 		return step === false;
 	};
 
+	//Currently unused, no steps can be skipped.
 	const isStepSkipped = (step) => {
 		return skipped.has(step);
 	};
 
+	//Moves to next step in application form, after clicking 'Next' button.
 	const handleNext = () => {
 		let newSkipped = skipped;
 		if (isStepSkipped(activeStep)) {
@@ -211,6 +220,7 @@ const RentalApplication = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
 
+	//Returns user to home page after confirmation message is acknowledged, and also clears out form.
 	const returnHome = () => {
 		currentStep[1](0);
 		formikPersonalInformation.resetForm();
@@ -363,7 +373,6 @@ const RentalApplication = () => {
 					</Grid>
 				</Box>
 			</form>
-
 			<Snackbar
 				open={toastOpen}
 				autoHideDuration={6000}

@@ -12,10 +12,12 @@ import {
 	MenuItem,
 } from '@mui/material';
 import NumberFormat from 'react-number-format';
+
 import { currentStepContext } from '../context/currentStepProvider';
 import CustomTextField from './CustomTextField';
 import CustomPhoneField from './CustomPhoneField';
 
+//Facilitates the use of custom number formats in certain fields.  forwardRef needed to comply with MUI V5 migration.  https://mui.com/pt/material-ui/migration/v5-component-changes/#forward-ref-instead-of-inputref-prop
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 	props,
 	ref
@@ -41,13 +43,17 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 const References = (props) => {
 	const currentStep = useContext(currentStepContext);
 
+	//Moves to next step of application after clicking 'Next' button.
 	const handleNext = () => {
 		currentStep[1](currentStep[0] + 1);
 	};
+
+	//Moves to previous step of application after clicking 'Previous' button.
 	const handleBack = () => {
 		currentStep[1](currentStep[0] - 1);
 	};
 
+	//Opaque background color for form fields.
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (
@@ -86,32 +92,6 @@ const References = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						{/* <TextField
-							id='firstReferencePhone'
-							name='firstReferencePhone'
-							label='Phone Number'
-							value={props.formik.values.firstReferencePhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.firstReferencePhone &&
-								Boolean(props.formik.errors.firstReferencePhone)
-							}
-							helperText={
-								props.formik.touched.firstReferencePhone &&
-								props.formik.errors.firstReferencePhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.firstReferencePhone ? true : false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
-						/> */}
 						<CustomPhoneField
 							id='firstReferencePhone'
 							label='Phone Number'
@@ -144,32 +124,6 @@ const References = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						{/* <TextField
-							id='secondReferencePhone'
-							name='secondReferencePhone'
-							label='Phone Number'
-							value={props.formik.values.secondReferencePhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.secondReferencePhone &&
-								Boolean(props.formik.errors.secondReferencePhone)
-							}
-							helperText={
-								props.formik.touched.secondReferencePhone &&
-								props.formik.errors.secondReferencePhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.secondReferencePhone ? true : false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
-						/> */}
 						<CustomPhoneField
 							id='secondReferencePhone'
 							label='Phone Number'
@@ -202,32 +156,6 @@ const References = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						{/* <TextField
-							id='thirdReferencePhone'
-							name='thirdReferencePhone'
-							label='Phone Number'
-							value={props.formik.values.thirdReferencePhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.thirdReferencePhone &&
-								Boolean(props.formik.errors.thirdReferencePhone)
-							}
-							helperText={
-								props.formik.touched.thirdReferencePhone &&
-								props.formik.errors.thirdReferencePhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.thirdReferencePhone ? true : false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
-						/> */}
 						<CustomPhoneField
 							id='thirdReferencePhone'
 							label='Phone Number'
@@ -366,7 +294,7 @@ const References = (props) => {
 							</FormLabel>
 							<RadioGroup
 								row
-								aria-labelledby='evictionRadioButtons'
+								// aria-labelledby='evictionRadioButtons'
 								name='evictionStatus'
 								value={props.formik.values.evictionStatus}
 								onChange={props.formik.handleChange}
