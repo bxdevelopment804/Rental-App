@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  Rental App
+</h1>
 
-## Getting Started
+1.  **What Does This Rental App Do?**
 
-First, run the development server:
+    Developed for a local business, this allows potential tenants to apply online for one of their properties in lieu of the paper applications that were previously used.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+2.  **Design Intent**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Create a landing page for a local business. Client receives email notification of all applications, without the need for a SMTP server.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+    MaterialUI, Formik, and Yup were used for components and structure, form state, and form validation, respectively. Each application has it's own Formik setup and Yup validation schema. ReactNumberFormat used to mask number fields, Context used to streamline page status amongst components.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+3.  **Tools Used**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    - Next.js
+    - MaterialUI
+    - Formik
+    - Yup
+    - Sass
+    - EmailJs
+    - ReactNumberFormat
+    - Context
 
-## Learn More
+4.  **Link**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    - [Rental App](https://bxd-rentals.vercel.app/)
