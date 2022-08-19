@@ -2,7 +2,6 @@ import { TextField } from '@mui/material';
 
 const CustomTextField = (props) => {
 	const id = props.id;
-	// const required = props.required;
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
 
 	return (

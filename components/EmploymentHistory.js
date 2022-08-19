@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 import NumberFormat from 'react-number-format';
 import { currentStepContext } from '../context/currentStepProvider';
+import CustomTextField from './CustomTextField';
+import CustomPhoneField from './CustomPhoneField';
 
-function NumberFormatCustom(props) {
-	const { inputRef, onChange, ...other } = props;
+const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
+	props,
+	ref
+) {
+	const { onChange, ...other } = props;
 
 	return (
 		<NumberFormat
 			{...other}
-			getInputRef={inputRef}
+			getInputRef={ref}
 			onValueChange={(values) => {
 				onChange({
 					target: {
@@ -18,10 +23,9 @@ function NumberFormatCustom(props) {
 					},
 				});
 			}}
-			thousandSeparator
 		/>
 	);
-}
+});
 
 const EmploymentHistory = (props) => {
 	const currentStep = useContext(currentStepContext);
@@ -38,53 +42,28 @@ const EmploymentHistory = (props) => {
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
-				<Typography variant='h6' className='stepHeader'>
+				<Typography
+					variant='h6'
+					className='stepHeader'
+					sx={{ marginBottom: '1rem' }}
+				>
 					Employment History
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='presentEmployer'
-							name='presentEmployer'
 							label='Present Employer'
-							value={props.formik.values.presentEmployer}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.presentEmployer &&
-								Boolean(props.formik.errors.presentEmployer)
-							}
-							helperText={
-								props.formik.touched.presentEmployer &&
-								props.formik.errors.presentEmployer
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='position'
-							name='position'
 							label='Position'
-							value={props.formik.values.position}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.position &&
-								Boolean(props.formik.errors.position)
-							}
-							helperText={
-								props.formik.touched.position && props.formik.errors.position
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
@@ -116,11 +95,9 @@ const EmploymentHistory = (props) => {
 							required
 							fullWidth
 						/>
-
-						{/* -----------------=------------------------- */}
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						{/* <TextField
 							id='employerPhone'
 							name='employerPhone'
 							label='Employer Phone Number'
@@ -145,98 +122,44 @@ const EmploymentHistory = (props) => {
 							}}
 							required
 							fullWidth
+						/> */}
+						<CustomPhoneField
+							id='employerPhone'
+							label='Employer Phone Number'
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='employerTenure'
-							name='employerTenure'
 							label='How many years at current job?'
-							value={props.formik.values.employerTenure}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.employerTenure &&
-								Boolean(props.formik.errors.employerTenure)
-							}
-							helperText={
-								props.formik.touched.employerTenure &&
-								props.formik.errors.employerTenure
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='otherIncome'
-							name='otherIncome'
 							label='Other Income Sources?'
-							value={props.formik.values.otherIncome}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.otherIncome &&
-								Boolean(props.formik.errors.otherIncome)
-							}
-							helperText={
-								props.formik.touched.otherIncome &&
-								props.formik.errors.otherIncome
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							// required
-							fullWidth
+							formik={props.formik}
+							mandatory='false'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='employerAddress'
-							name='employerAddress'
 							label='Employers Address'
-							value={props.formik.values.employerAddress}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.employerAddress &&
-								Boolean(props.formik.errors.employerAddress)
-							}
-							helperText={
-								props.formik.touched.employerAddress &&
-								props.formik.errors.employerAddress
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='employerCity'
-							name='employerCity'
 							label='City'
-							value={props.formik.values.employerCity}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.employerCity &&
-								Boolean(props.formik.errors.employerCity)
-							}
-							helperText={
-								props.formik.touched.employerCity &&
-								props.formik.errors.employerCity
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>
@@ -259,7 +182,7 @@ const EmploymentHistory = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
-							inputProps={{ style: { textTransform: 'uppercase' } }}
+							// inputProps={{ style: { textTransform: 'uppercase' } }}
 							required
 							fullWidth
 						/>

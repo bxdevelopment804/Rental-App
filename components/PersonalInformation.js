@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -7,16 +7,19 @@ import NumberFormat from 'react-number-format';
 import { currentStepContext } from '../context/currentStepProvider';
 
 import CustomTextField from './CustomTextField';
-import CustomPhoneField from './CustomPhoneField';
 import CustomEmailField from './CustomEmailField';
+import CustomPhoneField from './CustomPhoneField';
 
-function NumberFormatCustom(props) {
-	const { inputRef, onChange, ...other } = props;
+const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
+	props,
+	ref
+) {
+	const { onChange, ...other } = props;
 
 	return (
 		<NumberFormat
 			{...other}
-			getInputRef={inputRef}
+			getInputRef={ref}
 			onValueChange={(values) => {
 				onChange({
 					target: {
@@ -25,10 +28,9 @@ function NumberFormatCustom(props) {
 					},
 				});
 			}}
-			thousandSeparator
 		/>
 	);
-}
+});
 
 const PersonalInformation = (props) => {
 	const currentStep = useContext(currentStepContext);
@@ -42,7 +44,11 @@ const PersonalInformation = (props) => {
 	return (
 		<div id='informationPageContainer'>
 			<Box sx={{ flexGrow: 1 }}>
-				<Typography variant='h6' className='stepHeader'>
+				<Typography
+					variant='h6'
+					className='stepHeader'
+					sx={{ marginBottom: '1rem' }}
+				>
 					Personal Information
 				</Typography>
 
@@ -110,38 +116,12 @@ const PersonalInformation = (props) => {
 						</LocalizationProvider>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
-							fullWidth
-							id='applicantPhone'
-							name='applicantPhone'
-							label='Applicant Phone Number'
-							required
-							value={props.formik.values.applicantPhone}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.applicantPhone &&
-								Boolean(props.formik.errors.applicantPhone)
-							}
-							helperText={
-								props.formik.touched.applicantPhone &&
-								props.formik.errors.applicantPhone
-							}
-							inputProps={{ format: '(###) ###-####' }}
-							InputProps={{ inputComponent: NumberFormatCustom }}
-							InputLabelProps={{
-								shrink: props.formik.values.applicantPhone ? true : false,
-							}}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-						/>
-						{/* <CustomPhoneField
+						<CustomPhoneField
 							id='applicantPhone'
 							label='Applicant Phone Number'
 							formik={props.formik}
 							mandatory='true'
-						/> */}
+						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
 						<CustomEmailField
@@ -177,14 +157,6 @@ const PersonalInformation = (props) => {
 							required
 							value={props.formik.values.currentState}
 							onChange={props.formik.handleChange}
-							// onChange={(value) => {
-							// 	if (value !== null) {
-							// 		props.formik.setFieldValue(
-							// 			'currentState',
-							// 			value.toString().toUpperCase()
-							// 		);
-							// 	}
-							// }}
 							onBlur={props.formik.handleBlur}
 							error={
 								props.formik.touched.currentState &&
@@ -197,7 +169,7 @@ const PersonalInformation = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
-							inputProps={{ style: { textTransform: 'uppercase' } }}
+							// inputProps={{ style: { textTransform: 'uppercase' } }}
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>

@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 import NumberFormat from 'react-number-format';
 import { currentStepContext } from '../context/currentStepProvider';
+import CustomTextField from './CustomTextField';
+import CustomPhoneField from './CustomPhoneField';
 
-function NumberFormatCustom(props) {
-	const { inputRef, onChange, ...other } = props;
+const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
+	props,
+	ref
+) {
+	const { onChange, ...other } = props;
 
 	return (
 		<NumberFormat
 			{...other}
-			getInputRef={inputRef}
+			getInputRef={ref}
 			onValueChange={(values) => {
 				onChange({
 					target: {
@@ -18,10 +23,9 @@ function NumberFormatCustom(props) {
 					},
 				});
 			}}
-			thousandSeparator
 		/>
 	);
-}
+});
 
 const RentalHistory = (props) => {
 	const currentStep = useContext(currentStepContext);
@@ -38,35 +42,24 @@ const RentalHistory = (props) => {
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
-				<Typography variant='h6' className='stepHeader'>
+				<Typography
+					variant='h6'
+					className='stepHeader'
+					sx={{ marginBottom: '1rem' }}
+				>
 					Rental History
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='currentLandlord'
-							name='currentLandlord'
 							label="Current Landlord's Name"
-							value={props.formik.values.currentLandlord}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.currentLandlord &&
-								Boolean(props.formik.errors.currentLandlord)
-							}
-							helperText={
-								props.formik.touched.currentLandlord &&
-								props.formik.errors.currentLandlord
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							fullWidth
-							required
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						{/* <TextField
 							id='currentLandlordPhone'
 							name='currentLandlordPhone'
 							label="Current Landlord's Phone"
@@ -91,103 +84,44 @@ const RentalHistory = (props) => {
 							}}
 							required
 							fullWidth
+						/> */}
+						<CustomPhoneField
+							id='currentLandlordPhone'
+							label="Current Landlord's Phone"
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='currentTenure'
-							name='currentTenure'
 							label='How many years at this address?'
-							value={props.formik.values.currentTenure}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.currentTenure &&
-								Boolean(props.formik.errors.currentTenure)
-							}
-							helperText={
-								props.formik.touched.currentTenure &&
-								props.formik.errors.currentTenure
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='currentReason'
-							name='currentReason'
 							label='Reason for leaving?'
-							value={props.formik.values.currentReason}
-							onChange={props.formik.handleChange}
-							// onChange={() => {
-							// 	startTransition(() => {
-							// 		props.formik.handleChange;
-							// 	});
-							// }}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.currentReason &&
-								Boolean(props.formik.errors.currentReason)
-							}
-							helperText={
-								props.formik.touched.currentReason &&
-								props.formik.errors.currentReason
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='previousAddress'
-							name='previousAddress'
 							label='Previous Address'
-							value={props.formik.values.previousAddress}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.previousAddress &&
-								Boolean(props.formik.errors.previousAddress)
-							}
-							helperText={
-								props.formik.touched.previousAddress &&
-								props.formik.errors.previousAddress
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='previousCity'
-							name='previousCity'
 							label='City'
-							value={props.formik.values.previousCity}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.previousCity &&
-								Boolean(props.formik.errors.previousCity)
-							}
-							helperText={
-								props.formik.touched.previousCity &&
-								props.formik.errors.previousCity
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={3}>
@@ -210,7 +144,7 @@ const RentalHistory = (props) => {
 							sx={{
 								backgroundColor: { backgroundColor },
 							}}
-							inputProps={{ style: { textTransform: 'uppercase' } }}
+							// inputProps={{ style: { textTransform: 'uppercase' } }}
 							required
 							fullWidth
 						/>
@@ -244,30 +178,15 @@ const RentalHistory = (props) => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='previousLandlord'
-							name='previousLandlord'
 							label="Previous Landlord's Name"
-							value={props.formik.values.previousLandlord}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.previousLandlord &&
-								Boolean(props.formik.errors.previousLandlord)
-							}
-							helperText={
-								props.formik.touched.previousLandlord &&
-								props.formik.errors.previousLandlord
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						{/* <TextField
 							id='previousLandlordPhone'
 							name='previousLandlordPhone'
 							label="Previous Landlord's Phone"
@@ -294,52 +213,28 @@ const RentalHistory = (props) => {
 							}}
 							required
 							fullWidth
+						/> */}
+						<CustomPhoneField
+							id='previousLandlordPhone'
+							label="Previous Landlord's Phone"
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='previousTenure'
-							name='previousTenure'
 							label='How many years at this address?'
-							value={props.formik.values.previousTenure}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.previousTenure &&
-								Boolean(props.formik.errors.previousTenure)
-							}
-							helperText={
-								props.formik.touched.previousTenure &&
-								props.formik.errors.previousTenure
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<TextField
+						<CustomTextField
 							id='previousReason'
-							name='previousReason'
 							label='Reason for leaving?'
-							value={props.formik.values.previousReason}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.previousReason &&
-								Boolean(props.formik.errors.previousReason)
-							}
-							helperText={
-								props.formik.touched.previousReason &&
-								props.formik.errors.previousReason
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>

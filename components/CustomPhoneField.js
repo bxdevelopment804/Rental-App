@@ -1,29 +1,32 @@
+import React from 'react';
 import { TextField } from '@mui/material';
 import NumberFormat from 'react-number-format';
+
+const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
+	props,
+	ref
+) {
+	const { onChange, ...other } = props;
+
+	return (
+		<NumberFormat
+			{...other}
+			getInputRef={ref}
+			onValueChange={(values) => {
+				onChange({
+					target: {
+						name: props.name,
+						value: values.value,
+					},
+				});
+			}}
+		/>
+	);
+});
 
 const CustomPhoneField = (props) => {
 	const id = props.id;
 	const backgroundColor = 'rgb(240, 248, 255, 0.95)';
-
-	function NumberFormatCustom(props) {
-		const { inputRef, onChange, ...other } = props;
-
-		return (
-			<NumberFormat
-				{...other}
-				getInputRef={inputRef}
-				onValueChange={(values) => {
-					onChange({
-						target: {
-							name: props.name,
-							value: values.value,
-						},
-					});
-				}}
-				thousandSeparator
-			/>
-		);
-	}
 
 	return (
 		<div id='customTextFieldContainer'>

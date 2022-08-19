@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 import { TextField, Box, Grid, Button, Typography } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { currentStepContext } from '../context/currentStepProvider';
+import CustomTextField from './CustomTextField';
 
 const Signature = (props) => {
 	const currentStep = useContext(currentStepContext);
@@ -19,7 +18,11 @@ const Signature = (props) => {
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
-				<Typography variant='h6' className='stepHeader'>
+				<Typography
+					variant='h6'
+					className='stepHeader'
+					sx={{ marginBottom: '1rem' }}
+				>
 					Signature Page
 				</Typography>
 				<Grid container spacing={2}>
@@ -34,25 +37,11 @@ const Signature = (props) => {
 						</Typography>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='signedBy'
-							name='signedBy'
 							label='Signature'
-							required
-							value={props.formik.values.signedBy}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.signedBy &&
-								Boolean(props.formik.errors.signedBy)
-							}
-							helperText={
-								props.formik.touched.signedBy && props.formik.errors.signedBy
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
@@ -63,7 +52,6 @@ const Signature = (props) => {
 								// name='signatureDate'
 								label='Signature Date'
 								type='date'
-								// inputFormat='MM/dd/yyyy'
 								minDate={new Date()}
 								required
 								value={props.formik.values.signatureDate || null}

@@ -13,14 +13,19 @@ import {
 } from '@mui/material';
 import NumberFormat from 'react-number-format';
 import { currentStepContext } from '../context/currentStepProvider';
+import CustomTextField from './CustomTextField';
+import CustomPhoneField from './CustomPhoneField';
 
-function NumberFormatCustom(props) {
-	const { inputRef, onChange, ...other } = props;
+const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
+	props,
+	ref
+) {
+	const { onChange, ...other } = props;
 
 	return (
 		<NumberFormat
 			{...other}
-			getInputRef={inputRef}
+			getInputRef={ref}
 			onValueChange={(values) => {
 				onChange({
 					target: {
@@ -29,10 +34,9 @@ function NumberFormatCustom(props) {
 					},
 				});
 			}}
-			thousandSeparator
 		/>
 	);
-}
+});
 
 const References = (props) => {
 	const currentStep = useContext(currentStepContext);
@@ -49,81 +53,40 @@ const References = (props) => {
 	return (
 		<div>
 			<Box sx={{ flexGrow: 1 }}>
-				<Typography variant='h6' className='stepHeader'>
+				<Typography
+					variant='h6'
+					className='stepHeader'
+					sx={{ marginBottom: '1rem' }}
+				>
 					References / Other
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='firstReferenceName'
-							name='firstReferenceName'
 							label='Reference #1 Name'
-							value={props.formik.values.firstReferenceName}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.firstReferenceName &&
-								Boolean(props.formik.errors.firstReferenceName)
-							}
-							helperText={
-								props.formik.touched.firstReferenceName &&
-								props.formik.errors.firstReferenceName
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='firstReferenceTenure'
-							name='firstReferenceTenure'
 							label='Years Known'
-							value={props.formik.values.firstReferenceTenure}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.firstReferenceTenure &&
-								Boolean(props.formik.errors.firstReferenceTenure)
-							}
-							helperText={
-								props.formik.touched.firstReferenceTenure &&
-								props.formik.errors.firstReferenceTenure
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='firstReferenceRelationship'
-							name='firstReferenceRelationship'
 							label='Relationship'
-							value={props.formik.values.firstReferenceRelationship}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.firstReferenceRelationship &&
-								Boolean(props.formik.errors.firstReferenceRelationship)
-							}
-							helperText={
-								props.formik.touched.firstReferenceRelationship &&
-								props.formik.errors.firstReferenceRelationship
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						{/* <TextField
 							id='firstReferencePhone'
 							name='firstReferencePhone'
 							label='Phone Number'
@@ -148,79 +111,40 @@ const References = (props) => {
 							}}
 							required
 							fullWidth
+						/> */}
+						<CustomPhoneField
+							id='firstReferencePhone'
+							label='Phone Number'
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='secondReferenceName'
-							name='secondReferenceName'
 							label='Reference #2 Name'
-							value={props.formik.values.secondReferenceName}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.secondReferenceName &&
-								Boolean(props.formik.errors.secondReferenceName)
-							}
-							helperText={
-								props.formik.touched.secondReferenceName &&
-								props.formik.errors.secondReferenceName
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='secondReferenceTenure'
-							name='secondReferenceTenure'
 							label='Years Known'
-							value={props.formik.values.secondReferenceTenure}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.secondReferenceTenure &&
-								Boolean(props.formik.errors.secondReferenceTenure)
-							}
-							helperText={
-								props.formik.touched.secondReferenceTenure &&
-								props.formik.errors.secondReferenceTenure
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='secondReferenceRelationship'
-							name='secondReferenceRelationship'
 							label='Relationship'
-							value={props.formik.values.secondReferenceRelationship}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.secondReferenceRelationship &&
-								Boolean(props.formik.errors.secondReferenceRelationship)
-							}
-							helperText={
-								props.formik.touched.secondReferenceRelationship &&
-								props.formik.errors.secondReferenceRelationship
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						{/* <TextField
 							id='secondReferencePhone'
 							name='secondReferencePhone'
 							label='Phone Number'
@@ -245,79 +169,40 @@ const References = (props) => {
 							}}
 							required
 							fullWidth
+						/> */}
+						<CustomPhoneField
+							id='secondReferencePhone'
+							label='Phone Number'
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='thirdReferenceName'
-							name='thirdReferenceName'
 							label='Reference #3 Name'
-							value={props.formik.values.thirdReferenceName}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.thirdReferenceName &&
-								Boolean(props.formik.errors.thirdReferenceName)
-							}
-							helperText={
-								props.formik.touched.thirdReferenceName &&
-								props.formik.errors.thirdReferenceName
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='thirdReferenceTenure'
-							name='thirdReferenceTenure'
 							label='Years Known'
-							value={props.formik.values.thirdReferenceTenure}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.thirdReferenceTenure &&
-								Boolean(props.formik.errors.thirdReferenceTenure)
-							}
-							helperText={
-								props.formik.touched.thirdReferenceTenure &&
-								props.formik.errors.thirdReferenceTenure
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						<CustomTextField
 							id='thirdReferenceRelationship'
-							name='thirdReferenceRelationship'
 							label='Relationship'
-							value={props.formik.values.thirdReferenceRelationship}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.thirdReferenceRelationship &&
-								Boolean(props.formik.errors.thirdReferenceRelationship)
-							}
-							helperText={
-								props.formik.touched.thirdReferenceRelationship &&
-								props.formik.errors.thirdReferenceRelationship
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							required
-							fullWidth
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={4}>
-						<TextField
+						{/* <TextField
 							id='thirdReferencePhone'
 							name='thirdReferencePhone'
 							label='Phone Number'
@@ -342,16 +227,20 @@ const References = (props) => {
 							}}
 							required
 							fullWidth
+						/> */}
+						<CustomPhoneField
+							id='thirdReferencePhone'
+							label='Phone Number'
+							formik={props.formik}
+							mandatory='true'
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
 						<TextField
-							// autoWidth
 							id='adultsNumber'
 							name='adultsNumber'
 							label='Total Number of Adults'
 							inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-							// type='number'
 							select
 							value={props.formik.values.adultsNumber}
 							onChange={props.formik.handleChange}
@@ -393,7 +282,6 @@ const References = (props) => {
 							name='childrenNumber'
 							label='Total Number of Children Under Age 18'
 							inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-							// type='number'
 							select
 							value={props.formik.values.childrenNumber}
 							onChange={props.formik.handleChange}
@@ -433,29 +321,13 @@ const References = (props) => {
 						</TextField>
 					</Grid>
 					<Grid item xs={12} md={12}>
-						<TextField
+						<CustomTextField
 							id='otherApplicants'
-							name='otherApplicants'
 							label='Names of Other Applicants'
-							value={props.formik.values.otherApplicants}
-							onChange={props.formik.handleChange}
-							onBlur={props.formik.handleBlur}
-							error={
-								props.formik.touched.otherApplicants &&
-								Boolean(props.formik.errors.otherApplicants)
-							}
-							helperText={
-								props.formik.touched.applicantDOB &&
-								props.formik.errors.otherApplicants
-							}
-							sx={{
-								backgroundColor: { backgroundColor },
-							}}
-							// required
-							fullWidth
+							formik={props.formik}
+							mandatory='false'
 						/>
 					</Grid>
-
 					<Grid item xs={12} md={5}>
 						<TextField
 							id='depositMoney'
@@ -495,7 +367,6 @@ const References = (props) => {
 							<RadioGroup
 								row
 								aria-labelledby='evictionRadioButtons'
-								// id='evictionRadioButtons'
 								name='evictionStatus'
 								value={props.formik.values.evictionStatus}
 								onChange={props.formik.handleChange}

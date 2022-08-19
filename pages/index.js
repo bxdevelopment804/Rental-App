@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,6 +18,7 @@ export default function Home() {
 						id='backgroundImage'
 						src='https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1600'
 						layout='fill'
+						alt='Grey House On a Rainy Street'
 					/>
 				</Box>
 				<Box

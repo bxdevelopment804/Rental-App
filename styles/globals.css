@@ -1,33 +1,8 @@
-#applicantForm {
-  max-width: 600px;
-  margin: auto;
-}
-
 label {
   display: flex;
   margin: 0em 1em;
   box-sizing: border-box;
   width: auto;
-}
-
-#evictionButtonContainer {
-  display: flex;
-}
-
-#evictionStatus {
-  display: none;
-}
-
-#certificationParagraph,
-#submitButton,
-#referenceHeader,
-#submitButtonContainer {
-  padding: 0em 1em;
-  box-sizing: border-box;
-}
-
-.stepHeader {
-  margin-bottom: 1rem;
 }
 
 #homePageContainer {
@@ -149,23 +124,27 @@ label {
   box-sizing: border-box;
 }
 
-#stepper,
-#completionNotice {
-  position: relative;
-  z-index: 10;
-  height: 30px;
-  display: flex;
-  align-items: center;
-}
-
 #applicantForm {
   position: relative;
   display: flex;
   align-items: stretch;
   z-index: 10;
   height: 100%;
-  margin-top: 20px;
   padding: 0px 3vw;
+  max-width: 600px;
+  margin: 20px auto 0px auto;
+}
+
+#stepper,
+#completionNotice {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+#stepper {
+  height: 30px;
 }
 
 #applicationPageFooter {
@@ -180,13 +159,21 @@ label {
   width: fit-content;
   border-radius: 2rem;
   padding: 0rem 0.5rem;
-  margin: 0rem auto 1rem auto;
+  margin: 1rem auto 1rem auto;
 }
 
 #evictionContainer {
   background-color: rgba(240, 248, 255, 0.95);
   border-radius: 0.2rem;
   width: fit-content;
+}
+#evictionContainer #evictionButtonContainer {
+  display: flex;
+}
+
+#submitButton {
+  padding: 0em 1em;
+  box-sizing: border-box;
 }
 
 #customTextFieldContainer {

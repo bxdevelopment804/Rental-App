@@ -1,19 +1,11 @@
+// Variables
 $defaultFont: 'Quicksand', sans-serif;
 $defaultFontColor: rgb(11, 8, 112);
 $backgroundColor: rgba(47, 52, 56, 1);
 $backgroundAccent: rgba(228, 191, 121, 1);
 
-// #pageHeader {
-// 	justify-content: center;
-// }
-
-#applicantForm {
-	max-width: 600px;
-	margin: auto;
-}
-
-//--------------------
-
+//-------------------------------
+//WHAT FILE IS THIS ATTACHED TO??
 label {
 	display: flex;
 	margin: 0em 1em;
@@ -23,26 +15,8 @@ label {
 	// border: solid red;
 }
 
-#evictionButtonContainer {
-	display: flex;
-}
-#evictionStatus {
-	display: none;
-}
-#certificationParagraph,
-#submitButton,
-#referenceHeader,
-#submitButtonContainer {
-	padding: 0em 1em;
-	box-sizing: border-box;
-}
-
-//PersonalInformation.js, RentalHistory.js, EmploymentHistory.js, References.js, SignaturePage.js
-.stepHeader {
-	margin-bottom: 1rem;
-}
-
-//index.js
+// --------
+// index.js
 #homePageContainer {
 	position: relative;
 	display: flex;
@@ -91,6 +65,7 @@ label {
 	z-index: 5;
 	color: $backgroundAccent;
 }
+
 #heroSubText {
 	position: relative;
 	font-size: clamp(10px, calc(1rem + 2.5vw), 35px);
@@ -150,6 +125,7 @@ label {
 	margin: 0rem 0rem 0.5rem 0rem;
 }
 
+// -------------------
 //rentalApplication.js
 #applicationPageContainer {
 	display: flex;
@@ -163,23 +139,28 @@ label {
 	box-sizing: border-box;
 }
 
-#stepper,
-#completionNotice {
-	position: relative;
-	z-index: 10;
-	height: 30px;
-	display: flex;
-	align-items: center;
-}
-
 #applicantForm {
 	position: relative;
 	display: flex;
 	align-items: stretch;
 	z-index: 10;
 	height: 100%;
-	margin-top: 20px;
+	// margin-top: 20px;
 	padding: 0px 3vw;
+	max-width: 600px;
+	margin: 20px auto 0px auto;
+}
+
+#stepper,
+#completionNotice {
+	position: relative;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+}
+
+#stepper {
+	height: 30px;
 }
 
 #applicationPageFooter {
@@ -194,15 +175,32 @@ label {
 	width: fit-content;
 	border-radius: 2rem;
 	padding: 0rem 0.5rem;
-	margin: 0rem auto 1rem auto;
+	margin: 1rem auto 1rem auto;
 }
 
+// -------------
 // References.js
 #evictionContainer {
 	background-color: rgb(240, 248, 255, 0.95);
 	border-radius: 0.2rem;
 	width: fit-content;
+
+	#evictionButtonContainer {
+		display: flex;
+	}
 }
+
+// -------------
+// Signatures.js
+#submitButton
+// #certificationParagraph,
+// #referenceHeader,
+// #submitButtonContainer
+{
+	padding: 0em 1em;
+	box-sizing: border-box;
+}
+
 // ------------------
 // CustomTextField.js
 #customTextFieldContainer {
@@ -213,7 +211,8 @@ label {
 	height: 100%;
 }
 
-// Application Pages
+// ---------------------------------------------------------------
+// PersonalInformation.js, RentalHistory.js, EmploymentHistory.js, References.js, SignaturePage.js
 .MuiInputLabel-root {
 	background-color: rgb(240, 248, 255, 0.95);
 	border-radius: 0.2rem;
@@ -222,6 +221,7 @@ label {
 .MuiFormHelperText-root {
 	width: fit-content;
 }
+
 .MuiFormControl-fullWidth {
 	color: rgb(240, 248, 255, 0.95);
 	border-radius: 0.2rem;
@@ -231,6 +231,7 @@ label {
 	margin-bottom: 1rem;
 }
 
+// --------------------------------
 // rentalApplication.js Media Query
 @media (max-width: 625px) {
 	.MuiStepLabel-label {
