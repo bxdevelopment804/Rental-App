@@ -10,6 +10,7 @@ export default function Home() {
 			<Head>
 				<title>Fair Oak Farms Rental Application</title>
 				<link rel='icon' href='/favicon.ico' />
+				<meta content='Visit to apply for one of the Fair Oak Farm rental properties!' />
 			</Head>
 
 			<main id='homePageContainer'>
